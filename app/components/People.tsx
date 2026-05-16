@@ -13,6 +13,7 @@ const people = [
       { icon: 'ti ti-brand-github', label: 'GitHub', href: '#' },
     ],
     photoBg: 'linear-gradient(135deg,#E1F5EE,#80D4B8)',
+    photo: '/images/sandi.jpg',
   },
   {
     initials: 'SD',
@@ -28,6 +29,7 @@ const people = [
       { icon: 'ti ti-external-link', label: 'bubu.com', href: 'https://www.bubu.com' },
     ],
     photoBg: 'linear-gradient(135deg,#EEEDFE,#AFA9EC)',
+    photo: undefined,
   },
 ]
 
@@ -56,23 +58,25 @@ export default function People() {
             return (
               <div key={p.name} style={{ background: '#fff', border: '1px solid #eee', borderRadius: 14, overflow: 'hidden' }}>
                 <div style={{
-                  height: 240, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  position: 'relative', background: p.photoBg,
+                  height: 280, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  position: 'relative', background: p.photoBg, overflow: 'hidden',
+                  borderRadius: '14px 14px 0 0',
                 }}>
-                  <div style={{
-                    width: 88, height: 88, borderRadius: '50%', display: 'flex',
-                    alignItems: 'center', justifyContent: 'center',
-                    fontSize: 30, fontWeight: 600, ...c.initials,
-                  }}>
-                    {p.initials}
-                  </div>
-                  <div style={{
-                    position: 'absolute', bottom: 14, left: 14, fontSize: 11, color: '#888',
-                    background: '#fff', padding: '4px 10px', borderRadius: 20,
-                    border: '1px solid #eee', display: 'flex', alignItems: 'center', gap: 4,
-                  }}>
-                    <i className="ti ti-camera" style={{ fontSize: 12 }} /> Photo coming soon
-                  </div>
+                  {p.photo ? (
+                    <img
+                      src={p.photo}
+                      alt={p.name}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
+                    />
+                  ) : (
+                    <div style={{
+                      width: 96, height: 96, borderRadius: '50%', display: 'flex',
+                      alignItems: 'center', justifyContent: 'center',
+                      fontSize: 32, fontWeight: 600, ...c.initials,
+                    }}>
+                      {p.initials}
+                    </div>
+                  )}
                 </div>
 
                 <div style={{ padding: '22px 26px' }}>
