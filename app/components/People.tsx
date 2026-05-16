@@ -64,7 +64,7 @@ export default function People() {
                 }}>
                   <div style={{
                     width: 160, height: 160, borderRadius: '50%', overflow: 'hidden', flexShrink: 0,
-                    border: `3px solid ${p.initialsClass === 'founder' ? '#0E8F6A' : '#7C75D8'}`,
+                    border: p.initialsClass === 'founder' ? 'none' : '3px solid #7C75D8',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     background: p.photoBg,
                   }}>
