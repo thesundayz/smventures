@@ -58,23 +58,31 @@ export default function People() {
             return (
               <div key={p.name} style={{ background: '#fff', border: '1px solid #eee', borderRadius: 14, overflow: 'hidden' }}>
                 <div style={{
-                  height: 320, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  position: 'relative', background: p.photoBg, overflow: 'hidden',
-                  borderRadius: '14px 14px 0 0',
+                  height: 200, display: 'flex', flexDirection: 'column' as const,
+                  alignItems: 'center', justifyContent: 'center', gap: 12,
+                  background: '#f7f7f5', borderRadius: '14px 14px 0 0',
                 }}>
-                  {p.photo ? (
-                    <img
-                      src={p.photo}
-                      alt={p.name}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }}
-                    />
-                  ) : (
-                    <div style={{
-                      width: 96, height: 96, borderRadius: '50%', display: 'flex',
-                      alignItems: 'center', justifyContent: 'center',
-                      fontSize: 32, fontWeight: 600, ...c.initials,
-                    }}>
-                      {p.initials}
+                  <div style={{
+                    width: 160, height: 160, borderRadius: '50%', overflow: 'hidden', flexShrink: 0,
+                    border: `3px solid ${p.initialsClass === 'founder' ? '#0E8F6A' : '#7C75D8'}`,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    background: p.photoBg,
+                  }}>
+                    {p.photo ? (
+                      <img
+                        src={p.photo}
+                        alt={p.name}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
+                      />
+                    ) : (
+                      <span style={{ fontSize: 40, fontWeight: 600, ...c.initials, background: 'transparent' }}>
+                        {p.initials}
+                      </span>
+                    )}
+                  </div>
+                  {!p.photo && (
+                    <div style={{ fontSize: 11, color: '#aaa', display: 'flex', alignItems: 'center', gap: 4 }}>
+                      <i className="ti ti-camera" style={{ fontSize: 12 }} /> Photo coming soon
                     </div>
                   )}
                 </div>
