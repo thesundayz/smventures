@@ -16,7 +16,7 @@ export default function Footer() {
         <div style={{ display: 'flex', gap: 20 }}>
           {[
             { label: 'LinkedIn', href: 'https://www.linkedin.com/company/smventures' },
-            { label: 'Instagram', href: '#' },
+            { label: 'Instagram', href: 'https://www.instagram.com/smventures' },
             { label: 'Contact', href: '#contact' },
           ].map(({ label, href }) => (
             <a
