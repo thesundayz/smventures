@@ -58,7 +58,7 @@ export default function People() {
             return (
               <div key={p.name} style={{ background: '#fff', border: '1px solid #eee', borderRadius: 14, overflow: 'hidden' }}>
                 <div style={{
-                  height: 280, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  height: 320, display: 'flex', alignItems: 'center', justifyContent: 'center',
                   position: 'relative', background: p.photoBg, overflow: 'hidden',
                   borderRadius: '14px 14px 0 0',
                 }}>
@@ -66,7 +66,7 @@ export default function People() {
                     <img
                       src={p.photo}
                       alt={p.name}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }}
                     />
                   ) : (
                     <div style={{
