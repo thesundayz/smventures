@@ -8,7 +8,7 @@ const stats = [
 export default function StatsBar() {
   return (
     <div style={{ borderBottom: '1px solid #f0f0f0' }}>
-      <div style={{ maxWidth: 1280, margin: '0 auto', display: 'flex' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex' }}>
       {stats.map((s, i) => (
         <div key={s.label} style={{
           flex: 1, padding: '22px 32px',

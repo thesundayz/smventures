@@ -11,7 +11,7 @@ export default function Navbar() {
       background: '#fff', position: 'sticky', top: 0, zIndex: 100,
     }}>
       <div style={{
-        maxWidth: 1280, margin: '0 auto', padding: '16px 48px',
+        maxWidth: 1100, margin: '0 auto', padding: '16px 48px',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
         <a href="#">

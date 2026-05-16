@@ -164,11 +164,11 @@ export default function Hero() {
       {/* Overlay */}
       <div style={{ position: 'absolute', inset: 0, background: s.overlay, transition: 'background 0.9s ease' }} />
 
-      {/* Centered content wrapper — max-width 1280px, full height */}
+      {/* Centered content wrapper — max-width 1100px, full height */}
       <div style={{
         position: 'absolute', top: 0, bottom: 0,
         left: '50%', transform: 'translateX(-50%)',
-        width: '100%', maxWidth: 1280,
+        width: '100%', maxWidth: 1100,
       }}>
 
         {/* Float card */}

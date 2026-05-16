@@ -2,7 +2,7 @@ export default function Cta() {
   return (
     <div id="contact" style={{ background: '#04342C' }}>
       <div style={{
-        maxWidth: 1280, margin: '0 auto', padding: '60px 48px',
+        maxWidth: 1100, margin: '0 auto', padding: '60px 48px',
         display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 40,
       }}>
         <div>
