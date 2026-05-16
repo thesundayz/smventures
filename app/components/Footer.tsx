@@ -14,15 +14,21 @@ export default function Footer() {
         />
         <div style={{ fontSize: 12, color: '#aaa' }}>© 2025 SMVentures · Jakarta, Indonesia</div>
         <div style={{ display: 'flex', gap: 20 }}>
-          {['LinkedIn', 'Instagram', 'Contact'].map(link => (
+          {[
+            { label: 'LinkedIn', href: 'https://www.linkedin.com/company/smventures' },
+            { label: 'Instagram', href: '#' },
+            { label: 'Contact', href: '#contact' },
+          ].map(({ label, href }) => (
             <a
-              key={link}
-              href="#"
+              key={label}
+              href={href}
+              target={href.startsWith('http') ? '_blank' : undefined}
+              rel="noopener noreferrer"
               style={{ fontSize: 12, color: '#aaa', textDecoration: 'none' }}
               onMouseEnter={e => (e.currentTarget.style.color = '#0E8F6A')}
               onMouseLeave={e => (e.currentTarget.style.color = '#aaa')}
             >
-              {link}
+              {label}
             </a>
           ))}
         </div>
