@@ -54,7 +54,7 @@ const ventures = [
     name: 'Natara Projects', domain: 'nataraprojects.com',
     desc: 'Design & build contractor for residential, commercial, and industrial projects — Jabodetabek & Bandung, 8+ years experience.',
     pills: ['Design & Build', 'Renovation', 'Project Management'],
-    logo: null,
+    logo: '/images/logo-natara.png',
     logoHeight: 40,
   },
 ]
