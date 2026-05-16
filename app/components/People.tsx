@@ -58,9 +58,10 @@ export default function People() {
             return (
               <div key={p.name} style={{ background: '#fff', border: '1px solid #eee', borderRadius: 14, overflow: 'hidden' }}>
                 <div style={{
-                  height: 200, display: 'flex', flexDirection: 'column' as const,
+                  height: 220, width: '100%', display: 'flex', flexDirection: 'column' as const,
                   alignItems: 'center', justifyContent: 'center', gap: 12,
                   background: '#f7f7f5', borderRadius: '14px 14px 0 0',
+                  boxSizing: 'border-box' as const,
                 }}>
                   <div style={{
                     width: 160, height: 160, borderRadius: '50%', overflow: 'hidden', flexShrink: 0,
