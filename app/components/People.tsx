@@ -29,7 +29,7 @@ const people = [
       { icon: 'ti ti-external-link', label: 'bubu.com', href: 'https://www.bubu.com' },
     ],
     photoBg: 'linear-gradient(135deg,#EEEDFE,#AFA9EC)',
-    photo: undefined,
+    photo: 'https://res.cloudinary.com/ddr9t2l0o/image/upload/v1774949631/shintabubu-removebg-preview_dgti89.png',
   },
 ]
 
