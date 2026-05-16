@@ -89,41 +89,42 @@ export default function Portfolio() {
                 gridColumn: v.featured ? 'span 2' : undefined,
               }}
             >
-              <div style={{ height: 56, display: 'flex', alignItems: 'center', marginBottom: 14 }}>
-                {v.logo ? (
-                  <img
-                    src={v.logo}
-                    alt={v.name}
-                    style={{ height: v.logoHeight, width: 'auto', display: 'block', objectFit: 'contain' }}
-                  />
-                ) : (
-                  <div style={{
-                    height: 40, width: 40, borderRadius: 10, display: 'flex',
-                    alignItems: 'center', justifyContent: 'center',
-                    background: tagColors[v.tagKey].background,
-                    fontSize: 15, fontWeight: 700, color: placeholderColors[v.tagKey] ?? tagColors[v.tagKey].color,
-                    letterSpacing: -0.5,
-                  }}>
-                    {v.name.charAt(0)}
-                  </div>
-                )}
-              </div>
-
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, color: '#888', marginBottom: 14 }}>
                 <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#0E8F6A', flexShrink: 0 }} />
                 {v.status}
               </div>
               <div style={{
                 fontSize: 11, fontWeight: 600, padding: '3px 10px', borderRadius: 20,
-                display: 'inline-block', marginBottom: 12, ...tagColors[v.tagKey],
+                display: 'inline-block', marginBottom: 14, ...tagColors[v.tagKey],
               }}>
                 {v.tag}
               </div>
-              <div style={{ fontSize: 17, fontWeight: 600, color: '#171717', marginBottom: 4, letterSpacing: -0.2 }}>
-                {v.name}
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 11 }}>
+                {v.logo ? (
+                  <img
+                    src={v.logo}
+                    alt={v.name}
+                    style={{ width: 44, height: 44, borderRadius: 10, objectFit: 'cover', flexShrink: 0 }}
+                  />
+                ) : (
+                  <div style={{
+                    width: 44, height: 44, borderRadius: 10, flexShrink: 0,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    background: tagColors[v.tagKey].background,
+                    fontSize: 16, fontWeight: 700, color: placeholderColors[v.tagKey] ?? tagColors[v.tagKey].color,
+                  }}>
+                    {v.name.charAt(0)}
+                  </div>
+                )}
+                <div>
+                  <div style={{ fontSize: 17, fontWeight: 600, color: '#171717', letterSpacing: -0.2, lineHeight: 1.2 }}>
+                    {v.name}
+                  </div>
+                  <div style={{ fontSize: 12, color: '#0E8F6A', fontWeight: 500, marginTop: 2 }}>{v.domain}</div>
+                </div>
               </div>
-              <div style={{ fontSize: 12, color: '#0E8F6A', marginBottom: 11, fontWeight: 500 }}>{v.domain}</div>
-              <div style={{ fontSize: 13, color: '#666', lineHeight: 1.65, marginBottom: 16 }}>{v.desc}</div>
+              <div style={{ fontSize: 13, color: '#666', lineHeight: 1.65, marginBottom: 16, marginTop: 2 }}>{v.desc}</div>
               <div style={{ display: 'flex', flexWrap: 'wrap' as const, gap: 7 }}>
                 {v.pills.map(pill => (
                   <span key={pill} style={{ fontSize: 11, color: '#666', background: '#f5f5f3', padding: '3px 10px', borderRadius: 20 }}>
