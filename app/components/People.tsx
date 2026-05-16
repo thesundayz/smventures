@@ -10,7 +10,8 @@ const people = [
     tags: ['Full-stack engineering', 'Product strategy', 'B2B SaaS', 'LegalTech', 'Jakarta'],
     links: [
       { icon: 'ti ti-brand-linkedin', label: 'LinkedIn', href: '#' },
-      { icon: 'ti ti-brand-github', label: 'GitHub', href: '#' },
+      { icon: 'ti ti-brand-github', label: 'GitHub', href: 'https://github.com/thesundayz' },
+      { icon: 'ti ti-world', label: 'Website', href: 'https://www.sandimardiansyah.com/' },
     ],
     photoBg: 'linear-gradient(135deg,#E1F5EE,#80D4B8)',
     photo: '/images/sandi.png',
