@@ -14,6 +14,8 @@ const ventures = [
     name: 'Tandatangan.ID', domain: 'tandatangan.id',
     desc: 'Indonesia\'s e-signature and digital document platform — TTE, e-Meterai, HRIS, and corporate document management. Built for PSRE compliance and serving B2B clients across Indonesia.',
     pills: ['TTE / Digital Signature', 'e-Meterai', 'HRIS module', 'B2B SaaS', 'PSRE roadmap'],
+    logo: '/images/logo-tandatangan.png',
+    logoHeight: 36,
   },
   {
     featured: false,
@@ -22,6 +24,8 @@ const ventures = [
     name: 'Intermediatek', domain: 'intermediatek.com',
     desc: 'Technology solutions and IT services for businesses across Indonesia — from infrastructure to digital transformation.',
     pills: ['IT Consulting', 'Digital Solutions'],
+    logo: '/images/logo-intermediatek.png',
+    logoHeight: 44,
   },
   {
     featured: false,
@@ -30,6 +34,8 @@ const ventures = [
     name: 'Sahamku', domain: 'sahamku.net',
     desc: 'Stock market platform empowering Indonesian retail investors with tools, insights, and portfolio management.',
     pills: ['Stock Market', 'Retail Investors'],
+    logo: '/images/logo-sahamku.png',
+    logoHeight: 52,
   },
   {
     featured: false,
@@ -38,6 +44,8 @@ const ventures = [
     name: 'Neracaku', domain: 'neracaku.id',
     desc: 'Simple bookkeeping and accounting for Indonesian SMEs — financial management without an accountant on payroll.',
     pills: ['Bookkeeping', 'SME Finance'],
+    logo: null,
+    logoHeight: 40,
   },
   {
     featured: false,
@@ -46,8 +54,15 @@ const ventures = [
     name: 'Natara Projects', domain: 'nataraprojects.com',
     desc: 'Design & build contractor for residential, commercial, and industrial projects — Jabodetabek & Bandung, 8+ years experience.',
     pills: ['Design & Build', 'Renovation', 'Project Management'],
+    logo: null,
+    logoHeight: 40,
   },
 ]
+
+const placeholderColors: Record<string, string> = {
+  acc:  '#185FA5',
+  prop: '#993C1D',
+}
 
 export default function Portfolio() {
   return (
@@ -74,6 +89,26 @@ export default function Portfolio() {
                 gridColumn: v.featured ? 'span 2' : undefined,
               }}
             >
+              <div style={{ height: 56, display: 'flex', alignItems: 'center', marginBottom: 14 }}>
+                {v.logo ? (
+                  <img
+                    src={v.logo}
+                    alt={v.name}
+                    style={{ height: v.logoHeight, width: 'auto', display: 'block', objectFit: 'contain' }}
+                  />
+                ) : (
+                  <div style={{
+                    height: 40, width: 40, borderRadius: 10, display: 'flex',
+                    alignItems: 'center', justifyContent: 'center',
+                    background: tagColors[v.tagKey].background,
+                    fontSize: 15, fontWeight: 700, color: placeholderColors[v.tagKey] ?? tagColors[v.tagKey].color,
+                    letterSpacing: -0.5,
+                  }}>
+                    {v.name.charAt(0)}
+                  </div>
+                )}
+              </div>
+
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, color: '#888', marginBottom: 14 }}>
                 <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#0E8F6A', flexShrink: 0 }} />
                 {v.status}
