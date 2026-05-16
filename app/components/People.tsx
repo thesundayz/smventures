@@ -13,7 +13,7 @@ const people = [
       { icon: 'ti ti-brand-github', label: 'GitHub', href: '#' },
     ],
     photoBg: 'linear-gradient(135deg,#E1F5EE,#80D4B8)',
-    photo: '/images/sandi.jpg',
+    photo: '/images/sandi.png',
   },
   {
     initials: 'SD',
