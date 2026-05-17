@@ -1,3 +1,5 @@
+'use client'
+
 const tagColors: Record<string, { background: string; color: string }> = {
   legal:  { background: '#E1F5EE', color: '#0A6650' },
   tech:   { background: '#EEEDFE', color: '#3C3489' },
@@ -121,7 +123,16 @@ export default function Portfolio() {
                   <div style={{ fontSize: 17, fontWeight: 600, color: '#171717', letterSpacing: -0.2, lineHeight: 1.2 }}>
                     {v.name}
                   </div>
-                  <div style={{ fontSize: 12, color: '#0E8F6A', fontWeight: 500, marginTop: 2 }}>{v.domain}</div>
+                  <a
+                    href={`https://${v.domain}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ fontSize: 12, color: '#0E8F6A', fontWeight: 500, marginTop: 2, textDecoration: 'none', display: 'block' }}
+                    onMouseEnter={e => (e.currentTarget.style.textDecoration = 'underline')}
+                    onMouseLeave={e => (e.currentTarget.style.textDecoration = 'none')}
+                  >
+                    {v.domain}
+                  </a>
                 </div>
               </div>
               <div style={{ fontSize: 13, color: '#666', lineHeight: 1.65, marginBottom: 16, marginTop: 2 }}>{v.desc}</div>
