@@ -44,7 +44,7 @@ const ventures = [
     name: 'Neracaku', domain: 'neracaku.id',
     desc: 'Simple bookkeeping and accounting for Indonesian SMEs — financial management without an accountant on payroll.',
     pills: ['Bookkeeping', 'SME Finance'],
-    logo: null,
+    logo: '/images/logo-neracaku.png',
     logoHeight: 40,
   },
   {
