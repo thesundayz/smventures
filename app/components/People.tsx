@@ -27,6 +27,7 @@ const people = [
     tags: ['Angel investor', 'Bubu.com', 'Nusantara Ventures', 'KADIN', 'Silicon Valley'],
     links: [
       { icon: 'ti ti-brand-linkedin', label: 'LinkedIn', href: '#' },
+      { icon: 'ti ti-brand-instagram', label: 'Instagram', href: 'https://www.instagram.com/shintabubu' },
       { icon: 'ti ti-external-link', label: 'bubu.com', href: 'https://www.bubu.com' },
     ],
     photoBg: 'linear-gradient(135deg,#EEEDFE,#AFA9EC)',
