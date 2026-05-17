@@ -31,7 +31,7 @@ const people = [
       { icon: 'ti ti-external-link', label: 'bubu.com', href: 'https://www.bubu.com' },
     ],
     photoBg: 'linear-gradient(135deg,#EEEDFE,#AFA9EC)',
-    photo: 'https://media.licdn.com/dms/image/v2/C5103AQFycYpEr5q0BQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1558174501475?e=1780531200&v=beta&t=X-E1K8g9ph9Yx-p9kUsLcAo-JFYdoGyS_n3JeeXuXS0',
+    photo: '/images/shinta-dhanuwardoyo.jpg',
   },
 ]
 
