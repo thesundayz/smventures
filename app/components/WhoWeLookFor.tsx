@@ -24,7 +24,7 @@ const criteria = [
 export default function WhoWeLookFor() {
   return (
     <div style={{ padding: '64px 0', borderBottom: '1px solid #f0f0f0' }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 48px' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto' }} className="px-5 md:px-[48px]">
         <div style={{ fontSize: 11, fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: 1.2, color: '#0E8F6A', marginBottom: 10 }}>
           Who we build with
         </div>

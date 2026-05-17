@@ -3,10 +3,10 @@
 export default function Footer() {
   return (
     <footer style={{ borderTop: '1px solid #f0f0f0' }}>
-      <div style={{
-        maxWidth: 1100, margin: '0 auto', padding: '26px 48px',
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      }}>
+      <div
+        className="flex flex-col gap-4 items-center text-center md:flex-row md:items-center md:justify-between md:text-left px-5 md:px-[48px] py-[26px]"
+        style={{ maxWidth: 1100, margin: '0 auto' }}
+      >
         <img
           src="https://res.cloudinary.com/ddr9t2l0o/image/upload/v1774944179/smvc_logo_transparent_zlwinx.png"
           alt="SMVC Venture Capital"

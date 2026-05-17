@@ -1,9 +1,9 @@
 export default function Cta() {
   return (
     <div id="contact" style={{ background: '#04342C' }}>
-      <div style={{
-        maxWidth: 1100, margin: '0 auto', padding: '60px 48px',
-        display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 40,
+      <div
+        className="flex flex-col gap-6 md:flex-row md:justify-between md:items-center px-5 md:px-[48px] py-[60px]"
+        style={{ maxWidth: 1100, margin: '0 auto',
       }}>
         <div>
           <h2 style={{ fontSize: 28, fontWeight: 600, color: '#80D4B8', letterSpacing: -0.5, marginBottom: 10 }}>

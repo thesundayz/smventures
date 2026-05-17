@@ -24,7 +24,7 @@ const items = [
 export default function UnfairAdvantages() {
   return (
     <div style={{ padding: '64px 0', borderBottom: '1px solid #f0f0f0' }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 48px' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto' }} className="px-5 md:px-[48px]">
         <div style={{ fontSize: 11, fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: 1.2, color: '#0E8F6A', marginBottom: 10 }}>
           What we bring
         </div>
@@ -35,7 +35,7 @@ export default function UnfairAdvantages() {
           Every venture in our ecosystem gets direct access to these capabilities from day one.
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+        <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 12 }}>
           {items.map(item => (
             <div key={item.title} style={{ display: 'flex', gap: 16, background: '#f9f9f7', padding: 20, borderRadius: 10 }}>
               <div style={{

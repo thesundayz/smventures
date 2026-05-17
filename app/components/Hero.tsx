@@ -74,7 +74,7 @@ export default function Hero() {
   const s = SLIDES[current]
 
   return (
-    <div style={{ position: 'relative', height: 520, overflow: 'hidden' }}>
+    <div className="h-[420px] md:h-[520px]" style={{ position: 'relative', overflow: 'hidden' }}>
 
       {/* Photo background */}
       <img
@@ -107,27 +107,33 @@ export default function Hero() {
       }}>
 
         {/* Float card */}
-        <div style={{
-          position: 'absolute', top: 40, right: 48,
-          background: 'rgba(255,255,255,0.09)', border: '1px solid rgba(255,255,255,0.16)',
-          borderRadius: 12, padding: '18px 22px', minWidth: 168,
-          backdropFilter: 'blur(8px)',
-        }}>
-          <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)', marginBottom: 5 }}>
+        <div
+          className="p-[10px_14px] md:p-[18px_22px]"
+          style={{
+            position: 'absolute', top: 20, right: 16,
+            background: 'rgba(255,255,255,0.09)', border: '1px solid rgba(255,255,255,0.16)',
+            borderRadius: 12, minWidth: 140,
+            backdropFilter: 'blur(8px)',
+          }}
+        >
+          <div className="text-[10px] md:text-[11px]" style={{ color: 'rgba(255,255,255,0.45)', marginBottom: 4 }}>
             Venture {s.venture}
           </div>
-          <div style={{ fontSize: 15, fontWeight: 500, color: s.domainColor }}>{s.domain}</div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 10, fontSize: 11, color: 'rgba(255,255,255,0.45)' }}>
+          <div className="text-[12px] md:text-[15px]" style={{ fontWeight: 500, color: s.domainColor }}>{s.domain}</div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 8, fontSize: 10, color: 'rgba(255,255,255,0.45)' }}>
             <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#0E8F6A', flexShrink: 0 }} />
             {s.status}
           </div>
         </div>
 
         {/* Slide content */}
-        <div style={{
-          position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column',
-          justifyContent: 'flex-end', padding: '52px 48px',
-        }}>
+        <div
+          className="px-5 pb-10 md:px-[48px] md:pb-[52px]"
+          style={{
+            position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column',
+            justifyContent: 'flex-end',
+          }}
+        >
           <div style={{
             display: 'inline-flex', alignItems: 'center', gap: 6,
             fontSize: 11, fontWeight: 600, padding: '5px 12px',
@@ -136,7 +142,7 @@ export default function Hero() {
           }}>
             <i className={s.icon} /> {s.badgeText}
           </div>
-          <div style={{ fontSize: 40, fontWeight: 600, color: '#fff', letterSpacing: -1, lineHeight: 1.12, marginBottom: 12, whiteSpace: 'pre-line' }}>
+          <div className="text-[26px] md:text-[40px]" style={{ fontWeight: 600, color: '#fff', letterSpacing: -1, lineHeight: 1.12, marginBottom: 12, whiteSpace: 'pre-line' }}>
             {s.title}
           </div>
           <div style={{ fontSize: 15, color: 'rgba(255,255,255,0.72)', lineHeight: 1.65, maxWidth: 500, marginBottom: 28 }}>
@@ -164,7 +170,7 @@ export default function Hero() {
         </div>
 
         {/* Dots */}
-        <div style={{ position: 'absolute', bottom: 52, right: 56, display: 'flex', gap: 7 }}>
+        <div className="bottom-10 right-5 md:bottom-[52px] md:right-[56px]" style={{ position: 'absolute', display: 'flex', gap: 7 }}>
           {SLIDES.map((_, i) => (
             <button
               key={i}

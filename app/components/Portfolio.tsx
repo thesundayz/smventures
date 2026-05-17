@@ -69,7 +69,7 @@ const placeholderColors: Record<string, string> = {
 export default function Portfolio() {
   return (
     <div id="portfolio" style={{ padding: '64px 0', borderBottom: '1px solid #f0f0f0' }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 48px' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto' }} className="px-5 md:px-[48px]">
         <div style={{ fontSize: 11, fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: 1.2, color: '#0E8F6A', marginBottom: 10 }}>
           Portfolio
         </div>
@@ -80,15 +80,15 @@ export default function Portfolio() {
           Five companies across LegalTech, PropTech, FinTech, and digital infrastructure — all built within the SMVentures ecosystem.
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
+        <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: 12 }}>
           {ventures.map(v => (
             <div
               key={v.name}
+              className={v.featured ? 'md:col-span-2' : ''}
               style={{
                 background: '#fff',
                 border: `1px solid ${v.featured ? '#45BC97' : '#eee'}`,
                 borderRadius: 14, padding: 22,
-                gridColumn: v.featured ? 'span 2' : undefined,
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, color: '#888', marginBottom: 14 }}>
