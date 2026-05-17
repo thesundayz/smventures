@@ -69,7 +69,7 @@ export default function People() {
                 }}>
                   <div style={{
                     width: 160, height: 160, borderRadius: '50%', overflow: 'hidden', flexShrink: 0,
-                    border: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    border: '3px solid #fff', display: 'flex', alignItems: 'center', justifyContent: 'center',
                     background: p.photoBg,
                   }}>
                     {p.photo ? (
