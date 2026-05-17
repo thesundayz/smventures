@@ -26,7 +26,7 @@ const people = [
     bio: "Founder & CEO of Bubu.com — Indonesia's first and leading digital agency, founded in 1996. Angel investor, startup mentor, and one of the most networked figures in Southeast Asian tech. Former Managing Partner at Nusantara Ventures, co-founder of Silicon Valley Asia Technology Alliance. Recognized by Forbes Indonesia as \"Inspiring Women Honor Roll\" and Globe Asia's \"99 Most Powerful Women.\"",
     tags: ['Angel investor', 'Bubu.com', 'Nusantara Ventures', 'KADIN', 'Silicon Valley'],
     links: [
-      { icon: 'ti ti-brand-linkedin', label: 'LinkedIn', href: '#' },
+      { icon: 'ti ti-brand-linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/shintabubu/' },
       { icon: 'ti ti-brand-instagram', label: 'Instagram', href: 'https://www.instagram.com/shintabubu' },
       { icon: 'ti ti-external-link', label: 'bubu.com', href: 'https://www.bubu.com' },
     ],
