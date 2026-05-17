@@ -6,7 +6,7 @@ const vcItems = [
 ]
 
 const ourItems = [
-  'Capital + strategy + execution support',
+  'Advisory + strategy + execution support',
   'Managing partner embedded in operations',
   'Direct access to ecosystem & relationships',
   'Long-term co-builder, not a timer',
