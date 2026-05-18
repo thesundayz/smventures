@@ -9,7 +9,7 @@ const people = [
     bio: 'Solo founder and developer behind SMVentures and its portfolio companies. Combines deep technical hands-on capability with business strategy — from architecting production systems to closing corporate clients. Operates across all ventures as managing partner, embedding directly into each company\'s product, operations, and growth.',
     tags: ['Full-stack engineering', 'Product strategy', 'B2B SaaS', 'LegalTech', 'Jakarta'],
     links: [
-      { icon: 'ti ti-brand-linkedin', label: 'LinkedIn', href: '#' },
+      { icon: 'ti ti-brand-linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/thesundayz/' },
       { icon: 'ti ti-brand-github', label: 'GitHub', href: 'https://github.com/thesundayz' },
       { icon: 'ti ti-world', label: 'Website', href: 'https://www.sandimardiansyah.com/' },
     ],
