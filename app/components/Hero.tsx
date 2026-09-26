@@ -125,10 +125,12 @@ export default function Hero() {
 
         {/* Dots */}
         <div className="bottom-10 right-5 md:bottom-[52px] md:right-[56px]" style={{ position: 'absolute', display: 'flex', gap: 7 }}>
-          {ventures.map((_, i) => (
+          {ventures.map((v, i) => (
             <button
               key={i}
               onClick={() => goTo(i)}
+              aria-label={`Show venture ${i + 1}: ${v.name}`}
+              aria-current={i === current}
               style={{
                 width: i === current ? 22 : 6, height: 6, borderRadius: i === current ? 3 : '50%',
                 background: i === current ? '#0E8F6A' : 'rgba(255,255,255,0.32)',

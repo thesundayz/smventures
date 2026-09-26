@@ -1,6 +1,13 @@
 'use client'
 
-export default function Footer() {
+import { useSyncExternalStore } from 'react'
+
+const subscribe = () => () => {}
+
+export default function Footer({ buildYear }: { buildYear: number }) {
+  // Prerendered HTML carries the build year; after hydration the client shows the current year
+  const year = useSyncExternalStore(subscribe, () => new Date().getFullYear(), () => buildYear)
+
   return (
     <footer style={{ borderTop: '1px solid #f0f0f0' }}>
       <div
@@ -12,7 +19,7 @@ export default function Footer() {
           alt="SMVC Venture Capital"
           style={{ height: 36, width: 'auto', display: 'block' }}
         />
-        <div style={{ fontSize: 12, color: '#aaa' }}>© 2025 SMVentures · Jakarta, Indonesia</div>
+        <div style={{ fontSize: 12, color: '#aaa' }}>© {year} SMVentures · Jakarta, Indonesia</div>
         <div style={{ display: 'flex', gap: 20 }}>
           {[
             { label: 'LinkedIn', href: 'https://www.linkedin.com/company/smventures' },

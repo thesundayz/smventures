@@ -62,6 +62,8 @@ export default function Navbar() {
         <button
           className="flex md:hidden items-center justify-center"
           onClick={() => setOpen(o => !o)}
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
           style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4, color: '#171717' }}
         >
           <i className={open ? 'ti ti-x' : 'ti ti-menu-2'} style={{ fontSize: 22 }} />

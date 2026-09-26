@@ -10,11 +10,6 @@ const tagColors: Record<VentureTagKey, { background: string; color: string }> = 
   prop:   { background: '#FAECE7', color: '#993C1D' },
 }
 
-const placeholderColors: Record<string, string> = {
-  acc:  '#185FA5',
-  prop: '#993C1D',
-}
-
 export default function Portfolio() {
   return (
     <div id="portfolio" style={{ padding: '64px 0', borderBottom: '1px solid #f0f0f0' }}>
@@ -52,22 +47,11 @@ export default function Portfolio() {
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 11 }}>
-                {v.logo ? (
-                  <img
-                    src={v.logo}
-                    alt={v.name}
-                    style={{ width: 44, height: 44, borderRadius: 10, objectFit: 'cover', flexShrink: 0 }}
-                  />
-                ) : (
-                  <div style={{
-                    width: 44, height: 44, borderRadius: 10, flexShrink: 0,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    background: tagColors[v.tagKey].background,
-                    fontSize: 16, fontWeight: 700, color: placeholderColors[v.tagKey] ?? tagColors[v.tagKey].color,
-                  }}>
-                    {v.name.charAt(0)}
-                  </div>
-                )}
+                <img
+                  src={v.logo}
+                  alt={v.name}
+                  style={{ width: 44, height: 44, borderRadius: 10, objectFit: 'cover', flexShrink: 0 }}
+                />
                 <div>
                   <div style={{ fontSize: 17, fontWeight: 600, color: '#171717', letterSpacing: -0.2, lineHeight: 1.2 }}>
                     {v.name}

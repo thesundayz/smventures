@@ -78,11 +78,6 @@ export default function People() {
                       <span style={{ fontSize: 40, fontWeight: 600, ...c.initials, background: 'transparent' }}>{p.initials}</span>
                     )}
                   </div>
-                  {!p.photo && (
-                    <div style={{ fontSize: 11, color: '#aaa', display: 'flex', alignItems: 'center', gap: 4 }}>
-                      <i className="ti ti-camera" style={{ fontSize: 12 }} /> Photo coming soon
-                    </div>
-                  )}
                 </div>
 
                 <div style={{ padding: '20px 22px' }} className="md:px-[26px] md:py-[22px]">

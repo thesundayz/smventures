@@ -10,6 +10,9 @@ import WhoWeLookFor from "./components/WhoWeLookFor";
 import Cta from "./components/Cta";
 import Footer from "./components/Footer";
 
+// Evaluated at build time (the page is statically prerendered)
+const buildYear = new Date().getFullYear();
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -52,7 +55,7 @@ export default function Home() {
         <WhoWeLookFor />
         <Cta />
       </main>
-      <Footer />
+      <Footer buildYear={buildYear} />
     </>
   );
 }

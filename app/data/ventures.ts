@@ -10,7 +10,6 @@ export type Venture = {
   desc: string
   pills: string[]
   logo: string
-  logoHeight: number
   hero: {
     photo: string
     icon: string
@@ -34,7 +33,6 @@ export const ventures: Venture[] = [
     desc: 'Indonesia\'s e-signature and digital document platform — TTE, e-Meterai, HRIS, and corporate document management. Built for PSRE compliance and serving B2B clients across Indonesia.',
     pills: ['TTE / Digital Signature', 'e-Meterai', 'HRIS module', 'B2B SaaS', 'PSRE roadmap'],
     logo: '/images/logo-tandatangan.png',
-    logoHeight: 36,
     hero: {
       photo: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1400&q=80',
       icon: 'ti ti-file-certificate',
@@ -54,7 +52,6 @@ export const ventures: Venture[] = [
     desc: 'Technology solutions and IT services for businesses across Indonesia — from infrastructure to digital transformation.',
     pills: ['IT Consulting', 'Digital Solutions'],
     logo: '/images/logo-intermediatek.png',
-    logoHeight: 44,
     hero: {
       photo: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1400&q=80',
       icon: 'ti ti-cpu',
@@ -74,7 +71,6 @@ export const ventures: Venture[] = [
     desc: 'Stock market platform empowering Indonesian retail investors with tools, insights, and portfolio management.',
     pills: ['Stock Market', 'Retail Investors'],
     logo: '/images/logo-sahamku.png',
-    logoHeight: 52,
     hero: {
       photo: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1400&q=80',
       icon: 'ti ti-chart-line',
@@ -94,7 +90,6 @@ export const ventures: Venture[] = [
     desc: 'Simple bookkeeping and accounting for Indonesian SMEs — financial management without an accountant on payroll.',
     pills: ['Bookkeeping', 'SME Finance'],
     logo: '/images/logo-neracaku.png',
-    logoHeight: 40,
     hero: {
       photo: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1400&q=80',
       icon: 'ti ti-calculator',
@@ -114,7 +109,6 @@ export const ventures: Venture[] = [
     desc: 'Design & build contractor for residential, commercial, and industrial projects — Jabodetabek & Bandung, 8+ years experience.',
     pills: ['Design & Build', 'Renovation', 'Project Management'],
     logo: '/images/logo-natara.png',
-    logoHeight: 40,
     hero: {
       photo: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1400&q=80',
       icon: 'ti ti-building',
