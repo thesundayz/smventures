@@ -2,7 +2,8 @@ export type VentureTagKey = 'legal' | 'tech' | 'fin' | 'acc' | 'prop'
 
 export type Venture = {
   name: string
-  domain: string
+  /** Shown and linked on the site; null for a venture whose site is closed (no link, no domain). */
+  domain: string | null
   status: string
   featured: boolean
   tagKey: VentureTagKey
@@ -63,7 +64,7 @@ export const ventures: Venture[] = [
   },
   {
     name: 'Sahamku',
-    domain: 'sahamku.net',
+    domain: null,
     status: 'Live',
     featured: false,
     tagKey: 'fin',

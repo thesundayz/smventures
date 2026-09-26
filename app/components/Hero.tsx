@@ -85,7 +85,7 @@ export default function Hero() {
           <div className="text-[10px] md:text-[11px]" style={{ color: 'rgba(255,255,255,0.45)', marginBottom: 4 }}>
             Venture {String(current + 1).padStart(2, '0')}
           </div>
-          <div className="text-[12px] md:text-[15px]" style={{ fontWeight: 500, color: s.domainColor }}>{venture.domain}</div>
+          <div className="text-[12px] md:text-[15px]" style={{ fontWeight: 500, color: s.domainColor }}>{venture.domain ?? venture.name}</div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 8, fontSize: 10, color: 'rgba(255,255,255,0.45)' }}>
             <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#0E8F6A', flexShrink: 0 }} />
             {venture.status}
