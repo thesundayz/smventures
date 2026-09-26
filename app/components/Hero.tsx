@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { ventures } from '../data/ventures'
+import { openContact } from './ContactForm'
 
 const DURATION = 4500
 
@@ -114,7 +115,7 @@ export default function Hero() {
             {s.desc}
           </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
-            <button style={{
+            <button onClick={() => openContact('pitch')} style={{
               background: '#0E8F6A', color: '#E1F5EE', padding: '11px 24px',
               borderRadius: 8, fontSize: 13, fontWeight: 500, border: 'none', cursor: 'pointer', fontFamily: 'inherit',
             }}>

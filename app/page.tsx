@@ -9,6 +9,7 @@ import UnfairAdvantages from "./components/UnfairAdvantages";
 import WhoWeLookFor from "./components/WhoWeLookFor";
 import Cta from "./components/Cta";
 import Footer from "./components/Footer";
+import ContactForm from "./components/ContactForm";
 
 // Evaluated at build time (the page is statically prerendered)
 const buildYear = new Date().getFullYear();
@@ -56,6 +57,7 @@ export default function Home() {
         <Cta />
       </main>
       <Footer buildYear={buildYear} />
+      <ContactForm />
     </>
   );
 }
