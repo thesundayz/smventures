@@ -10,6 +10,8 @@ const links = [
   { label: 'Contact', id: 'contact' },
 ]
 
+const INVESTOR_LOGIN = 'https://investor.smventures.id/login'
+
 export default function Navbar() {
   const [open, setOpen] = useState(false)
 
@@ -50,17 +52,17 @@ export default function Navbar() {
         </ul>
 
         {/* Desktop CTA */}
-        <button
+        <a
+          href={INVESTOR_LOGIN}
           className="hidden md:block"
-          onClick={() => scroll('contact')}
           style={{
             fontSize: 13, fontWeight: 500, background: '#0A6650', color: '#E1F5EE',
             padding: '9px 18px', borderRadius: 8, border: 'none', cursor: 'pointer',
-            fontFamily: 'inherit',
+            fontFamily: 'inherit', textDecoration: 'none',
           }}
         >
-          Work with us
-        </button>
+          Login as Investor
+        </a>
 
         {/* Mobile hamburger */}
         <button
@@ -91,16 +93,16 @@ export default function Navbar() {
                 {label}
               </a>
             ))}
-            <button
-              onClick={() => scroll('contact')}
+            <a
+              href={INVESTOR_LOGIN}
               style={{
                 marginTop: 14, fontSize: 13, fontWeight: 500, background: '#0A6650', color: '#E1F5EE',
                 padding: '11px 18px', borderRadius: 8, border: 'none', cursor: 'pointer',
-                fontFamily: 'inherit', textAlign: 'center',
+                fontFamily: 'inherit', textAlign: 'center', textDecoration: 'none',
               }}
             >
-              Work with us
-            </button>
+              Login as Investor
+            </a>
           </div>
         </div>
       )}
