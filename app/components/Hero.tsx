@@ -27,20 +27,30 @@ export default function Hero() {
 
   const venture = ventures[current]
   const s = venture.hero
+  const upcoming = ventures[(current + 1) % ventures.length].hero
 
   return (
     <div className="h-[420px] md:h-[520px]" style={{ position: 'relative', overflow: 'hidden' }}>
 
-      {/* Photo background */}
-      <Image
-        key={s.photo}
-        src={s.photo}
-        alt=""
-        fill
-        sizes="100vw"
-        preload={current === 0}
-        style={{ objectFit: 'cover', objectPosition: 'center' }}
-      />
+      {/* Photo background. The upcoming slide's photo sits underneath the current one and loads
+          at low priority; keyed by URL, React moves that same <img> on top when the slide
+          advances, so it is already loaded. Only these two photos are ever in the DOM. */}
+      {[upcoming, s].map(slide => {
+        const isCurrent = slide === s
+        return (
+          <Image
+            key={slide.photo}
+            src={slide.photo}
+            alt=""
+            fill
+            sizes="100vw"
+            preload={isCurrent && current === 0}
+            loading={isCurrent ? undefined : 'eager'}
+            fetchPriority={isCurrent ? undefined : 'low'}
+            style={{ objectFit: 'cover', objectPosition: 'center' }}
+          />
+        )
+      })}
 
       {/* Dark gradient overlay: left heavier for text legibility, right lighter for float card */}
       <div style={{
