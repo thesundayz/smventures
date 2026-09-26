@@ -26,7 +26,7 @@ export default function VcComparison() {
           Venture capital provides capital. Venture builders provide everything else — and then some.
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1px 1fr', border: '1px solid #eee', borderRadius: 14, overflow: 'hidden' }}>
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_1px_1fr]" style={{ border: '1px solid #eee', borderRadius: 14, overflow: 'hidden' }}>
           <div style={{ padding: 32 }}>
             <div style={{ fontSize: 11, fontWeight: 600, padding: '4px 11px', borderRadius: 20, display: 'inline-block', marginBottom: 18, background: '#f5f5f3', color: '#888' }}>
               Traditional VC
@@ -42,7 +42,8 @@ export default function VcComparison() {
             </div>
           </div>
 
-          <div style={{ background: '#eee' }} />
+          {/* Divider: horizontal on mobile, vertical from md */}
+          <div className="h-px md:h-auto" style={{ background: '#eee' }} />
 
           <div style={{ padding: 32, background: '#04342C' }}>
             <div style={{ fontSize: 11, fontWeight: 600, padding: '4px 11px', borderRadius: 20, display: 'inline-block', marginBottom: 18, background: '#0E8F6A', color: '#E1F5EE' }}>

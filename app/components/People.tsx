@@ -123,7 +123,7 @@ export default function People() {
                       <span key={t} style={{ fontSize: 11, color: '#666', background: '#f5f5f3', padding: '4px 10px', borderRadius: 20 }}>{t}</span>
                     ))}
                   </div>
-                  <div style={{ display: 'flex', gap: 14 }}>
+                  <div style={{ display: 'flex', flexWrap: 'wrap' as const, gap: 14 }}>
                     {p.links.map(l => (
                       <a key={l.label} href={l.href} target={l.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer"
                         style={{ fontSize: 12, color: '#888', display: 'flex', alignItems: 'center', gap: 5, textDecoration: 'none' }}>
