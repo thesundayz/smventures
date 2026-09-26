@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 const people = [
   {
     initials: 'SM',
@@ -73,7 +75,7 @@ export default function People() {
                     background: p.photoBg,
                   }}>
                     {p.photo ? (
-                      <img src={p.photo} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
+                      <Image src={p.photo} alt={p.name} width={160} height={160} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
                     ) : (
                       <span style={{ fontSize: 40, fontWeight: 600, ...c.initials, background: 'transparent' }}>{p.initials}</span>
                     )}
@@ -88,7 +90,7 @@ export default function People() {
                       background: p.photoBg, display: 'flex', alignItems: 'center', justifyContent: 'center',
                     }}>
                       {p.photo ? (
-                        <img src={p.photo} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
+                        <Image src={p.photo} alt={p.name} width={56} height={56} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
                       ) : (
                         <span style={{ fontSize: 18, fontWeight: 600, ...c.initials, background: 'transparent' }}>{p.initials}</span>
                       )}

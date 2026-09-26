@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
 import { ventures } from '../data/ventures'
 
 const DURATION = 4500
@@ -31,14 +32,14 @@ export default function Hero() {
     <div className="h-[420px] md:h-[520px]" style={{ position: 'relative', overflow: 'hidden' }}>
 
       {/* Photo background */}
-      <img
+      <Image
         key={s.photo}
         src={s.photo}
         alt=""
-        style={{
-          position: 'absolute', inset: 0, width: '100%', height: '100%',
-          objectFit: 'cover', objectPosition: 'center',
-        }}
+        fill
+        sizes="100vw"
+        preload={current === 0}
+        style={{ objectFit: 'cover', objectPosition: 'center' }}
       />
 
       {/* Dark gradient overlay: left heavier for text legibility, right lighter for float card */}

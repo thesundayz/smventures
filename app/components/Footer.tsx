@@ -1,6 +1,7 @@
 'use client'
 
 import { useSyncExternalStore } from 'react'
+import Image from 'next/image'
 
 const subscribe = () => () => {}
 
@@ -14,10 +15,12 @@ export default function Footer({ buildYear }: { buildYear: number }) {
         className="flex flex-col gap-4 items-center text-center md:flex-row md:items-center md:justify-between md:text-left px-5 md:px-[48px] py-[26px]"
         style={{ maxWidth: 1100, margin: '0 auto' }}
       >
-        <img
+        <Image
           src="https://res.cloudinary.com/ddr9t2l0o/image/upload/v1774944179/smvc_logo_transparent_zlwinx.png"
           alt="SMVC Venture Capital"
-          style={{ height: 36, width: 'auto', display: 'block' }}
+          width={93}
+          height={36}
+          style={{ display: 'block' }}
         />
         <div style={{ fontSize: 12, color: '#aaa' }}>© {year} SMVentures · Jakarta, Indonesia</div>
         <div style={{ display: 'flex', gap: 20 }}>

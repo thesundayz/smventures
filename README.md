@@ -7,7 +7,8 @@ Marketing site for [SMVentures](https://smventures.id), a venture builder in Ind
 - Next.js 16 (App Router, Turbopack), React 19, TypeScript
 - Tailwind CSS 4 (configured in `app/globals.css`, no `tailwind.config`)
 - Inter via `next/font`, Tabler Icons webfont
-- Google Analytics (`G-MPJCQW41XD`)
+- `next/image` for all images (remote hosts allowed in `next.config.ts`)
+- Google Analytics (`G-MPJCQW41XD`) via `@next/third-parties`
 
 Read the Next.js 16 docs bundled in `node_modules/next/dist/docs/` before changing code; APIs differ from older versions (see `AGENTS.md`).
 

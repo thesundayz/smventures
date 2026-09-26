@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { ventures, ventureCountWord, type VentureTagKey } from '../data/ventures'
 
 const tagColors: Record<VentureTagKey, { background: string; color: string }> = {
@@ -47,10 +48,12 @@ export default function Portfolio() {
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 11 }}>
-                <img
+                <Image
                   src={v.logo}
                   alt={v.name}
-                  style={{ width: 44, height: 44, borderRadius: 10, objectFit: 'cover', flexShrink: 0 }}
+                  width={44}
+                  height={44}
+                  style={{ borderRadius: 10, objectFit: 'cover', flexShrink: 0 }}
                 />
                 <div>
                   <div style={{ fontSize: 17, fontWeight: 600, color: '#171717', letterSpacing: -0.2, lineHeight: 1.2 }}>

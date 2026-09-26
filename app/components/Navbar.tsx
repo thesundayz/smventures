@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 
 const links = [
   { label: 'About', id: 'how-we-work' },
@@ -21,10 +22,13 @@ export default function Navbar() {
     <nav style={{ borderBottom: '1px solid #f0f0f0', background: '#fff', position: 'sticky', top: 0, zIndex: 100 }}>
       <div style={{ maxWidth: 1100, margin: '0 auto' }} className="flex items-center justify-between px-5 md:px-[48px] py-[16px]">
         <a href="#">
-          <img
+          <Image
             src="https://res.cloudinary.com/ddr9t2l0o/image/upload/v1774944179/smvc_logo_transparent_zlwinx.png"
             alt="SMVC Venture Capital"
-            style={{ height: 36, width: 'auto', display: 'block' }}
+            width={93}
+            height={36}
+            loading="eager"
+            style={{ display: 'block' }}
           />
         </a>
 
