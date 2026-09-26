@@ -1,5 +1,7 @@
+import { ventures } from '../data/ventures'
+
 const stats = [
-  { num: '5', label: 'Active ventures' },
+  { num: String(ventures.length), label: 'Active ventures' },
   { num: '5+', label: 'Industries' },
   { num: '100%', label: 'Hands-on involvement' },
   { num: 'ID', label: 'Built for Indonesia' },

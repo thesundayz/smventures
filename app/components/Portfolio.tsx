@@ -1,65 +1,14 @@
 'use client'
 
-const tagColors: Record<string, { background: string; color: string }> = {
+import { ventures, ventureCountWord, type VentureTagKey } from '../data/ventures'
+
+const tagColors: Record<VentureTagKey, { background: string; color: string }> = {
   legal:  { background: '#E1F5EE', color: '#0A6650' },
   tech:   { background: '#EEEDFE', color: '#3C3489' },
   fin:    { background: '#FAEEDA', color: '#854F0B' },
   acc:    { background: '#E6F1FB', color: '#185FA5' },
   prop:   { background: '#FAECE7', color: '#993C1D' },
 }
-
-const ventures = [
-  {
-    featured: true,
-    status: 'Live · Flagship',
-    tagKey: 'legal', tag: 'LegalTech · e-Signature',
-    name: 'Tandatangan.ID', domain: 'tandatangan.id',
-    desc: 'Indonesia\'s e-signature and digital document platform — TTE, e-Meterai, HRIS, and corporate document management. Built for PSRE compliance and serving B2B clients across Indonesia.',
-    pills: ['TTE / Digital Signature', 'e-Meterai', 'HRIS module', 'B2B SaaS', 'PSRE roadmap'],
-    logo: '/images/logo-tandatangan.png',
-    logoHeight: 36,
-  },
-  {
-    featured: false,
-    status: 'Live',
-    tagKey: 'tech', tag: 'Technology · IT Services',
-    name: 'Intermediatek', domain: 'intermediatek.com',
-    desc: 'Technology solutions and IT services for businesses across Indonesia — from infrastructure to digital transformation.',
-    pills: ['IT Consulting', 'Digital Solutions'],
-    logo: '/images/logo-intermediatek.png',
-    logoHeight: 44,
-  },
-  {
-    featured: false,
-    status: 'Live',
-    tagKey: 'fin', tag: 'FinTech · Investment',
-    name: 'Sahamku', domain: 'sahamku.net',
-    desc: 'Stock market platform empowering Indonesian retail investors with tools, insights, and portfolio management.',
-    pills: ['Stock Market', 'Retail Investors'],
-    logo: '/images/logo-sahamku.png',
-    logoHeight: 52,
-  },
-  {
-    featured: false,
-    status: 'Live',
-    tagKey: 'acc', tag: 'FinTech · Accounting',
-    name: 'Neracaku', domain: 'neracaku.id',
-    desc: 'Simple bookkeeping and accounting for Indonesian SMEs — financial management without an accountant on payroll.',
-    pills: ['Bookkeeping', 'SME Finance'],
-    logo: '/images/logo-neracaku.png',
-    logoHeight: 40,
-  },
-  {
-    featured: false,
-    status: 'Live',
-    tagKey: 'prop', tag: 'PropTech · Design & Build',
-    name: 'Natara Projects', domain: 'nataraprojects.com',
-    desc: 'Design & build contractor for residential, commercial, and industrial projects — Jabodetabek & Bandung, 8+ years experience.',
-    pills: ['Design & Build', 'Renovation', 'Project Management'],
-    logo: '/images/logo-natara.png',
-    logoHeight: 40,
-  },
-]
 
 const placeholderColors: Record<string, string> = {
   acc:  '#185FA5',
@@ -77,7 +26,7 @@ export default function Portfolio() {
           Our ventures.
         </div>
         <div style={{ fontSize: 15, color: '#666', lineHeight: 1.7, maxWidth: 520, marginBottom: 28 }}>
-          Five companies across LegalTech, PropTech, FinTech, and digital infrastructure — all built within the SMVentures ecosystem.
+          {ventureCountWord} companies across LegalTech, PropTech, FinTech, and digital infrastructure — all built within the SMVentures ecosystem.
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: 12 }}>
