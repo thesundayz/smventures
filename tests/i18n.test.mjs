@@ -61,7 +61,7 @@ function embeddedText(source) {
   for (const m of code.matchAll(/(?<![=-])>([^<>{}]+)</g)) {
     const text = m[1].trim()
     // TypeScript generics (`Props<'/x'>): Promise<…`) are code, not JSX text.
-    if (/^[)\],;:=|&?(.]/.test(text)) continue
+    if (/^[)\],;:=|&?(.]/.test(text) || /\breturn\b|=|\($/.test(text)) continue
     if (/\p{L}{2,}/u.test(text)) found.push(text)
   }
   for (const m of code.matchAll(/\b(aria-label|alt|title|placeholder)="([^"]*)"/g)) {

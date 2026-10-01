@@ -8,11 +8,12 @@ import { getDictionary, localePath } from "@/app/i18n";
 import { langFrom } from "@/app/i18n/server";
 import { publishedInsights } from "@/app/lib/insights";
 import { BASE_URL, INSTAGRAM, LINKEDIN_COMPANY, LOGO_URL } from "@/app/lib/links";
-import { alternates } from "@/app/lib/seo";
+import { pageMetadata } from "@/app/lib/seo";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]">): Promise<Metadata> {
   const lang = await langFrom(params);
-  return { alternates: alternates(lang, "/") };
+  const t = getDictionary(lang).meta;
+  return pageMetadata({ lang, path: "/", title: t.title, description: t.description, absoluteTitle: true });
 }
 
 export default async function Home({ params }: PageProps<"/[lang]">) {

@@ -8,7 +8,8 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/en", destination: "/", permanent: true },
-      { source: "/en/:path*", destination: "/:path*", permanent: true },
+      // Generated Open Graph images keep their /en/... address (Next builds it from the route).
+      { source: "/en/:path((?!(?:.*/)?opengraph-image(?:/|$)).+)", destination: "/:path", permanent: true },
     ];
   },
   async rewrites() {

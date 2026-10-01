@@ -4,7 +4,7 @@ import InsightArticle from "@/app/components/insights/InsightArticle";
 import { LANGS, getDictionary, localePath } from "@/app/i18n";
 import { langFrom } from "@/app/i18n/server";
 import { visibleInsights } from "@/app/lib/insights";
-import { alternates } from "@/app/lib/seo";
+import { pageMetadata } from "@/app/lib/seo";
 
 // Only the posts this build shows (never drafts in production), each in its own language;
 // anything else is a 404.
@@ -23,11 +23,10 @@ async function find(params: PageProps<"/[lang]/insights/[slug]">["params"]) {
 export async function generateMetadata({ params }: PageProps<"/[lang]/insights/[slug]">): Promise<Metadata> {
   const { lang, post } = await find(params);
   if (!post) return {};
+  const metadata = pageMetadata({ lang, path: `/insights/${post.slug}`, title: post.title, description: post.summary, langs: [lang], type: "article" });
   return {
-    title: post.title,
-    description: post.summary,
-    alternates: alternates(lang, `/insights/${post.slug}`, [lang]),
-    openGraph: { type: "article", publishedTime: post.date, title: post.title, description: post.summary },
+    ...metadata,
+    openGraph: { ...metadata.openGraph, type: "article", publishedTime: post.date },
     ...(post.draft ? { robots: { index: false } } : {}),
   };
 }

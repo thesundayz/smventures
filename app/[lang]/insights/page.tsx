@@ -5,18 +5,15 @@ import { Container, Kicker, Lead } from "@/app/components/ui";
 import { getDictionary, localePath } from "@/app/i18n";
 import { langFrom } from "@/app/i18n/server";
 import { visibleInsights } from "@/app/lib/insights";
-import { alternates } from "@/app/lib/seo";
+import { pageMetadata } from "@/app/lib/seo";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/insights">): Promise<Metadata> {
   const lang = await langFrom(params);
   const t = getDictionary(lang).insights;
+  const metadata = pageMetadata({ lang, path: "/insights", title: t.metaTitle, description: t.metaDescription, langs: [lang] });
   return {
-    title: t.metaTitle,
-    description: t.metaDescription,
-    alternates: {
-      ...alternates(lang, "/insights", [lang]),
-      types: { "application/rss+xml": localePath(lang, "/insights/rss.xml") },
-    },
+    ...metadata,
+    alternates: { ...metadata.alternates, types: { "application/rss+xml": localePath(lang, "/insights/rss.xml") } },
   };
 }
 

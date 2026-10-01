@@ -5,7 +5,7 @@ import { findListedVenture, listedVentures } from "@/app/data/ventures";
 import { fmt, getDictionary, localePath } from "@/app/i18n";
 import { langFrom } from "@/app/i18n/server";
 import { BASE_URL } from "@/app/lib/links";
-import { alternates } from "@/app/lib/seo";
+import { pageMetadata } from "@/app/lib/seo";
 
 // Only listed ventures have a page; any other slug is a 404.
 export const dynamicParams = false;
@@ -19,11 +19,13 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/portfolio/
   const venture = findListedVenture((await params).slug);
   if (!venture) return {};
   const t = getDictionary(lang).venture;
-  return {
-    title: { absolute: fmt(t.metaTitle, { name: venture.name }) },
+  return pageMetadata({
+    lang,
+    path: `/portfolio/${venture.slug}`,
+    title: fmt(t.metaTitle, { name: venture.name }),
     description: venture.desc[lang],
-    alternates: alternates(lang, `/portfolio/${venture.slug}`),
-  };
+    absoluteTitle: true,
+  });
 }
 
 export default async function Page({ params }: PageProps<"/[lang]/portfolio/[slug]">) {

@@ -7,7 +7,7 @@ import Header, { type NavLink } from "@/app/components/Header";
 import { LANGS, getDictionary, localePath } from "@/app/i18n";
 import { langFrom } from "@/app/i18n/server";
 import { publishedInsights } from "@/app/lib/insights";
-import { BASE_URL, LOGO_URL } from "@/app/lib/links";
+import { BASE_URL } from "@/app/lib/links";
 import { alternates } from "@/app/lib/seo";
 import "../globals.css";
 
@@ -62,7 +62,6 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
       title: t.title,
       description: t.ogDescription,
       siteName: "SMVentures",
-      images: [{ url: LOGO_URL, width: 1200, height: 630, alt: "SMVentures — Venture Builder Indonesia" }],
       locale: lang === "id" ? "id_ID" : "en_ID",
       alternateLocale: lang === "id" ? "en_ID" : "id_ID",
     },
@@ -70,7 +69,6 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
       card: "summary_large_image",
       title: t.title,
       description: t.shortDescription,
-      images: [LOGO_URL],
     },
     robots: {
       index: true,
