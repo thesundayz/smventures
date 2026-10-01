@@ -46,6 +46,8 @@ export const en = {
     portfolio: {
       kicker: 'Portfolio',
       title: '{count} companies, one operating bench.',
+      readStory: 'Read the story →',
+      readStoryOf: 'Read the story of {name}',
     },
     approach: {
       kicker: 'How we work',
@@ -121,6 +123,30 @@ export const en = {
     privacyLink: 'Read the portal’s privacy policy',
     disclaimer:
       'Nothing on this page is an offer of securities. The investor portal is for registered shareholders of SMVC companies only.',
+  },
+  venture: {
+    metaTitle: '{name} — SMVentures portfolio',
+    back: 'Portfolio',
+    visit: 'Visit {domain}',
+    factsLabel: 'Key facts',
+    founded: 'Founded',
+    sector: 'Sector',
+    products: 'Products',
+    basedIn: 'Based in',
+    smvcRole: 'SMVC role',
+    website: 'Website',
+    focusLabel: 'What it covers',
+    storyLabel: 'The story',
+    problem: 'The problem',
+    built: 'What we built',
+    now: 'Where it is now',
+  },
+  notFound: {
+    metaTitle: 'Page not found',
+    kicker: '404',
+    title: 'We couldn’t find that page.',
+    lead: 'The address may be mistyped, or the page has moved.',
+    home: 'Back to the home page',
   },
   contact: {
     title: 'Let’s talk',

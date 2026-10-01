@@ -6,3 +6,5 @@ export const INSTAGRAM = 'https://www.instagram.com/smventures'
 export const LOGO_URL = 'https://res.cloudinary.com/ddr9t2l0o/image/upload/v1774944179/smvc_logo_transparent_zlwinx.png'
 /** The investor portal's privacy policy (public page). */
 export const PORTAL_PRIVACY = 'https://investor.smventures.id/privasi'
+/** The site's own address, for canonical URLs, JSON-LD and the sitemap. */
+export const BASE_URL = 'https://smventures.id'
