@@ -155,7 +155,7 @@ export default function ContactForm({ t }: { t: Dictionary['contact'] }) {
             </div>
             <div>
               <label htmlFor="contact-organisation" className={label}>
-                {t.organisation} <span className="font-normal text-faint">{t.optional}</span>
+                {t.organisation} <span className="font-normal text-subtle">{t.optional}</span>
               </label>
               <input id="contact-organisation" value={values.organisation} onChange={set('organisation')} autoComplete="organization" maxLength={150} className={input} aria-invalid={Boolean(errors.organisation)} />
               {errors.organisation && <p className={fieldError}>{errors.organisation}</p>}

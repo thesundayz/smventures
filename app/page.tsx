@@ -1,12 +1,14 @@
-import Hero from "./components/Hero";
-import StatsBar from "./components/StatsBar";
+import Cta from "./components/Cta";
 import HowWeWork from "./components/HowWeWork";
 import People from "./components/People";
-import VcComparison from "./components/VcComparison";
-import Portfolio from "./components/Portfolio";
+import ShareholdersBand from "./components/ShareholdersBand";
 import UnfairAdvantages from "./components/UnfairAdvantages";
+import VcComparison from "./components/VcComparison";
 import WhoWeLookFor from "./components/WhoWeLookFor";
-import Cta from "./components/Cta";
+import Approach from "./components/home/Approach";
+import HomeHero from "./components/home/HomeHero";
+import PortfolioGrid from "./components/home/PortfolioGrid";
+import { getDictionary } from "./i18n";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -32,6 +34,7 @@ const jsonLd = {
 };
 
 export default function Home() {
+  const t = getDictionary("en");
   return (
     <>
       <script
@@ -39,12 +42,14 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <main>
-        <Hero />
-        <StatsBar />
+        <HomeHero t={t.home.hero} stats={t.home.stats} />
+        <PortfolioGrid t={t.home.portfolio} numberWords={t.numberWords} lang="en" />
+        <Approach t={t.home.approach} />
+        <ShareholdersBand t={t.home.shareholders} />
+        {/* The earlier home sections, until they move to /about (S1-05). */}
         <HowWeWork />
         <People />
         <VcComparison />
-        <Portfolio />
         <UnfairAdvantages />
         <WhoWeLookFor />
         <Cta />

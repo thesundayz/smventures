@@ -4,6 +4,7 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { describe, it } from 'node:test'
 import { CONTACT_MESSAGES, RateLimiter, contactEmail, validateContact } from '../app/lib/contact.ts'
+import { en } from '../app/i18n/en.ts'
 
 const good = { name: 'Ana', email: 'ana@example.test', organisation: '', kind: 'pitch', message: 'A legal tech idea for SMEs.', website: '' }
 
@@ -68,7 +69,9 @@ describe('the route', () => {
   })
 
   it('both buttons open the form', () => {
-    assert.match(readFileSync('app/components/Hero.tsx', 'utf8'), /onClick=\{\(\) => openContact\('pitch'\)\}[\s\S]*?Pitch your idea/)
+    // "Pitch your idea" (home hero) opens it with "Pitch an idea" chosen; the copy is in the dictionary.
+    assert.match(readFileSync('app/components/home/HomeHero.tsx', 'utf8'), /<ContactButton kind="pitch"[\s\S]*?\{t\.pitch\}/)
+    assert.equal(en.home.hero.pitch, 'Pitch your idea')
     assert.match(readFileSync('app/components/Cta.tsx', 'utf8'), /<ContactButton[\s\S]*?Get in touch/)
   })
 })

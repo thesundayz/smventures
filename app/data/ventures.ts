@@ -1,127 +1,197 @@
+// The portfolio. Only ventures with `listed: true` appear anywhere on the site (home, venture
+// pages, sitemap, statistics); set it back to true to show one again. Optional facts and story
+// parts that are empty (null) are not rendered: fill them in only with confirmed facts.
+// No imports, so `node --test` can load this file directly.
+
+export type Localized = { en: string; id: string }
+
 export type VentureTagKey = 'legal' | 'tech' | 'fin' | 'acc' | 'prop'
 
 export type Venture = {
+  /** URL of the venture page: /portfolio/<slug> */
+  slug: string
   name: string
+  /** false hides the venture everywhere on the site; its data stays here. */
+  listed: boolean
   /** Shown and linked on the site; null for a venture whose site is closed (no link, no domain). */
   domain: string | null
-  status: string
   featured: boolean
+  status: Localized
   tagKey: VentureTagKey
-  tag: string
-  desc: string
-  pills: string[]
+  /** "Sector · focus"; the part before " · " is shown as the sector. */
+  tag: Localized
+  /** One line used as the lead on the venture page. */
+  headline: Localized
+  desc: Localized
+  pills: { en: string[]; id: string[] }
   logo: string
-  hero: {
-    photo: string
-    icon: string
-    title: string
-    desc: string
-    domainColor: string
-    badgeColor: string
-    badgeBg: string
-    badgeBorder: string
+  /** Year ("2024") or year and month ("2024-06") the company was founded. */
+  founded: string | null
+  basedIn: Localized | null
+  /** Product names, as the company writes them. */
+  products: string[] | null
+  smvcRole: Localized | null
+  story: {
+    problem: Localized | null
+    built: Localized | null
+    now: Localized | null
   }
 }
 
+const noStory = { problem: null, built: null, now: null }
+
 export const ventures: Venture[] = [
   {
+    slug: 'tandatangan-id',
     name: 'Tandatangan.ID',
+    listed: true,
     domain: 'tandatangan.id',
-    status: 'Live · Flagship',
     featured: true,
+    status: { en: 'Live · Flagship', id: 'Beroperasi · Unggulan' },
     tagKey: 'legal',
-    tag: 'LegalTech · e-Signature',
-    desc: 'Indonesia\'s e-signature and digital document platform — TTE, e-Meterai, HRIS, and corporate document management. Built for PSRE compliance and serving B2B clients across Indonesia.',
-    pills: ['TTE / Digital Signature', 'e-Meterai', 'HRIS module', 'B2B SaaS', 'PSRE roadmap'],
+    tag: { en: 'LegalTech · e-Signature', id: 'LegalTech · Tanda tangan elektronik' },
+    headline: {
+      en: 'Indonesia’s e-signature platform, built for compliance.',
+      id: 'Platform tanda tangan elektronik Indonesia, dibangun untuk kepatuhan.',
+    },
+    desc: {
+      en: 'Indonesia’s e-signature and digital document platform — TTE, e-Meterai, HRIS, and corporate document management. Built for PSRE compliance and serving B2B clients across Indonesia.',
+      id: 'Platform tanda tangan elektronik dan dokumen digital Indonesia: TTE, e-Meterai, HRIS, dan manajemen dokumen perusahaan. Dibangun untuk memenuhi ketentuan PSrE dan melayani klien B2B di seluruh Indonesia.',
+    },
+    pills: {
+      en: ['TTE / Digital Signature', 'e-Meterai', 'HRIS module', 'B2B SaaS', 'PSRE roadmap'],
+      id: ['TTE / Tanda tangan digital', 'e-Meterai', 'Modul HRIS', 'SaaS B2B', 'Peta jalan PSrE'],
+    },
     logo: '/images/logo-tandatangan.png',
-    hero: {
-      photo: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1400&q=80',
-      icon: 'file-certificate',
-      title: "Indonesia's e-signature\nplatform, built for compliance.",
-      desc: 'TTE, e-Meterai, document management, and HRIS — all in one platform serving corporate clients across Indonesia.',
-      domainColor: '#80D4B8',
-      badgeColor: '#45BC97', badgeBg: 'rgba(14,143,106,0.2)', badgeBorder: 'rgba(69,188,151,0.3)',
-    },
+    founded: null,
+    basedIn: null,
+    products: null,
+    smvcRole: null,
+    story: noStory,
   },
   {
+    slug: 'intermediatek',
     name: 'Intermediatek',
+    listed: true,
     domain: 'intermediatek.com',
-    status: 'Live',
     featured: false,
+    status: { en: 'Live', id: 'Beroperasi' },
     tagKey: 'tech',
-    tag: 'Technology · IT Services',
-    desc: 'Technology solutions and IT services for businesses across Indonesia — from infrastructure to digital transformation.',
-    pills: ['IT Consulting', 'Digital Solutions'],
+    tag: { en: 'Technology · IT Services', id: 'Teknologi · Layanan TI' },
+    headline: {
+      en: 'Digital transformation for Indonesian businesses.',
+      id: 'Transformasi digital untuk bisnis di Indonesia.',
+    },
+    desc: {
+      en: 'Technology solutions and IT services for businesses across Indonesia — from infrastructure to digital transformation.',
+      id: 'Solusi teknologi dan layanan TI untuk bisnis di seluruh Indonesia, dari infrastruktur sampai transformasi digital.',
+    },
+    pills: {
+      en: ['IT Consulting', 'Digital Solutions'],
+      id: ['Konsultasi TI', 'Solusi digital'],
+    },
     logo: '/images/logo-intermediatek.png',
-    hero: {
-      photo: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1400&q=80',
-      icon: 'cpu',
-      title: 'Digital transformation\nfor Indonesian businesses.',
-      desc: 'End-to-end IT consulting and technology solutions — from infrastructure to software, built by practitioners who\'ve shipped real products.',
-      domainColor: '#AFA9EC',
-      badgeColor: '#AFA9EC', badgeBg: 'rgba(127,119,221,0.2)', badgeBorder: 'rgba(175,169,236,0.3)',
-    },
+    founded: null,
+    basedIn: null,
+    products: null,
+    smvcRole: null,
+    story: noStory,
   },
   {
+    // Not shown until WS-9 is decided; set listed to true to bring it back.
+    slug: 'sahamku',
     name: 'Sahamku',
+    listed: false,
     domain: null,
-    status: 'Live',
     featured: false,
+    status: { en: 'Live', id: 'Beroperasi' },
     tagKey: 'fin',
-    tag: 'FinTech · Investment',
-    desc: 'Stock market platform empowering Indonesian retail investors with tools, insights, and portfolio management.',
-    pills: ['Stock Market', 'Retail Investors'],
+    tag: { en: 'FinTech · Investment', id: 'FinTech · Investasi' },
+    headline: {
+      en: 'Empowering Indonesia’s retail investors.',
+      id: 'Memberdayakan investor ritel Indonesia.',
+    },
+    desc: {
+      en: 'Stock market platform empowering Indonesian retail investors with tools, insights, and portfolio management.',
+      id: 'Platform pasar modal yang membekali investor ritel Indonesia dengan alat, wawasan, dan pengelolaan portofolio.',
+    },
+    pills: {
+      en: ['Stock Market', 'Retail Investors'],
+      id: ['Pasar modal', 'Investor ritel'],
+    },
     logo: '/images/logo-sahamku.png',
-    hero: {
-      photo: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1400&q=80',
-      icon: 'chart-line',
-      title: "Empowering Indonesia's\nretail investors.",
-      desc: 'Tools, insights, and portfolio management for Indonesian retail investors navigating the local stock market with confidence.',
-      domainColor: '#FAC775',
-      badgeColor: '#FAC775', badgeBg: 'rgba(186,117,23,0.2)', badgeBorder: 'rgba(250,199,117,0.3)',
-    },
+    founded: null,
+    basedIn: null,
+    products: null,
+    smvcRole: null,
+    story: noStory,
   },
   {
+    slug: 'neracaku',
     name: 'Neracaku',
+    listed: true,
     domain: 'neracaku.id',
-    status: 'Live',
     featured: false,
+    status: { en: 'Live', id: 'Beroperasi' },
     tagKey: 'acc',
-    tag: 'FinTech · Accounting',
-    desc: 'Simple bookkeeping and accounting for Indonesian SMEs — financial management without an accountant on payroll.',
-    pills: ['Bookkeeping', 'SME Finance'],
-    logo: '/images/logo-neracaku.png',
-    hero: {
-      photo: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1400&q=80',
-      icon: 'calculator',
-      title: 'Bookkeeping made simple\nfor Indonesian SMEs.',
-      desc: 'Accessible financial management for small businesses — no accountant on payroll required. Track, report, and stay on top of your numbers.',
-      domainColor: '#85B7EB',
-      badgeColor: '#85B7EB', badgeBg: 'rgba(55,138,221,0.2)', badgeBorder: 'rgba(133,183,235,0.3)',
+    tag: { en: 'FinTech · Accounting', id: 'FinTech · Akuntansi' },
+    headline: {
+      en: 'Bookkeeping made simple for Indonesian SMEs.',
+      id: 'Pembukuan yang sederhana untuk UMKM Indonesia.',
     },
+    desc: {
+      en: 'Simple bookkeeping and accounting for Indonesian SMEs — financial management without an accountant on payroll.',
+      id: 'Pembukuan dan akuntansi sederhana untuk UMKM Indonesia: keuangan tetap tertata tanpa harus menggaji akuntan.',
+    },
+    pills: {
+      en: ['Bookkeeping', 'SME Finance'],
+      id: ['Pembukuan', 'Keuangan UMKM'],
+    },
+    logo: '/images/logo-neracaku.png',
+    founded: null,
+    basedIn: null,
+    products: null,
+    smvcRole: null,
+    story: noStory,
   },
   {
+    slug: 'natara-projects',
     name: 'Natara Projects',
+    listed: true,
     domain: 'nataraprojects.com',
-    status: 'Live',
     featured: false,
+    status: { en: 'Live', id: 'Beroperasi' },
     tagKey: 'prop',
-    tag: 'PropTech · Design & Build',
-    desc: 'Design & build contractor for residential, commercial, and industrial projects — Jabodetabek & Bandung, 8+ years experience.',
-    pills: ['Design & Build', 'Renovation', 'Project Management'],
-    logo: '/images/logo-natara.png',
-    hero: {
-      photo: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1400&q=80',
-      icon: 'building',
-      title: 'Professional design & build\nacross Jabodetabek & Bandung.',
-      desc: 'Residential, commercial, renovation, and industrial — end-to-end with 8+ years of experience and full project transparency.',
-      domainColor: '#F0997B',
-      badgeColor: '#F0997B', badgeBg: 'rgba(216,90,48,0.2)', badgeBorder: 'rgba(240,153,123,0.3)',
+    tag: { en: 'PropTech · Design & Build', id: 'PropTech · Desain & bangun' },
+    headline: {
+      en: 'Professional design & build across Jabodetabek & Bandung.',
+      id: 'Desain dan bangun profesional di Jabodetabek dan Bandung.',
     },
+    desc: {
+      en: 'Design & build contractor for residential, commercial, and industrial projects — Jabodetabek & Bandung, 8+ years experience.',
+      id: 'Kontraktor desain dan bangun untuk proyek hunian, komersial, dan industri di Jabodetabek dan Bandung, dengan pengalaman lebih dari 8 tahun.',
+    },
+    pills: {
+      en: ['Design & Build', 'Renovation', 'Project Management'],
+      id: ['Desain & bangun', 'Renovasi', 'Manajemen proyek'],
+    },
+    logo: '/images/logo-natara.png',
+    founded: null,
+    basedIn: null,
+    products: null,
+    smvcRole: null,
+    story: noStory,
   },
 ]
 
-const NUMBER_WORDS = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten']
+/** The ventures shown on the site, in order. */
+export const listedVentures: Venture[] = ventures.filter((v) => v.listed)
 
-// Venture count spelled out for prose ("Five companies …"); falls back to digits past ten
-export const ventureCountWord = NUMBER_WORDS[ventures.length] ?? String(ventures.length)
+export function findListedVenture(slug: string): Venture | undefined {
+  return listedVentures.find((v) => v.slug === slug)
+}
+
+/** "LegalTech · e-Signature" → "LegalTech" */
+export function sectorOf(tag: string): string {
+  return tag.split(' · ')[0]
+}
