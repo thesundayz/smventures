@@ -1,21 +1,23 @@
+import { CodeIcon, ScaleIcon, TrendIcon, UsersIcon } from './icons'
+
 const items = [
   {
-    icon: 'ti ti-code',
+    Icon: CodeIcon,
     title: 'Product & engineering',
     desc: "Hands-on technical leadership — product strategy, architecture, and execution from an operator who has shipped.",
   },
   {
-    icon: 'ti ti-users',
+    Icon: UsersIcon,
     title: 'Corporate network',
     desc: 'Direct access to decision-makers in enterprise, government, and financial institutions across Indonesia.',
   },
   {
-    icon: 'ti ti-scale',
+    Icon: ScaleIcon,
     title: 'Regulatory expertise',
     desc: 'Deep familiarity with OJK, Kominfo, BSrE, and the regulatory landscape that trips up most founders.',
   },
   {
-    icon: 'ti ti-chart-arrows-vertical',
+    Icon: TrendIcon,
     title: 'GTM for Indonesia',
     desc: 'Battle-tested go-to-market playbooks for B2B, enterprise, and SME segments in the Indonesian market.',
   },
@@ -42,7 +44,7 @@ export default function UnfairAdvantages() {
                 width: 38, height: 38, background: '#E1F5EE', borderRadius: 9,
                 display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
               }}>
-                <i className={item.icon} style={{ fontSize: 18, color: '#0A6650' }} />
+                <item.Icon size={18} className="text-brand-700" />
               </div>
               <div>
                 <div style={{ fontSize: 14, fontWeight: 600, color: '#171717', marginBottom: 5 }}>{item.title}</div>

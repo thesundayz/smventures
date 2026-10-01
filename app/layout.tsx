@@ -1,13 +1,26 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { IBM_Plex_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import ContactForm from "./components/ContactForm";
+import Footer from "./components/Footer";
+import Header, { type NavLink } from "./components/Header";
+import { getDictionary } from "./i18n";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+// Self-hosted by next/font: no request to Google Fonts from the browser.
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
 });
+
+// Evaluated at build time (pages are statically prerendered)
+const buildYear = new Date().getFullYear();
 
 const BASE_URL = "https://smventures.id";
 
@@ -71,15 +84,32 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const t = getDictionary("en");
+  const links: NavLink[] = [
+    { href: "/#how-we-work", label: t.nav.about },
+    { href: "/#portfolio", label: t.nav.portfolio },
+    { href: "/#people", label: t.nav.people },
+    { href: "/#for-shareholders", label: t.nav.shareholders },
+  ];
   return (
-    <html lang="en">
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css"
+    <html lang="en" className={`${jakarta.variable} ${plexMono.variable}`}>
+      <body>
+        <Header
+          homeHref="/"
+          links={links}
+          labels={{
+            nav: t.nav.label,
+            login: t.nav.login,
+            openMenu: t.nav.openMenu,
+            closeMenu: t.nav.closeMenu,
+            logoAlt: t.brand.logoAlt,
+            home: t.brand.home,
+          }}
         />
-      </head>
-      <body className={inter.variable}>{children}</body>
+        {children}
+        <Footer t={t.footer} logoAlt={t.brand.logoAlt} buildYear={buildYear} />
+        <ContactForm t={t.contact} />
+      </body>
       <GoogleAnalytics gaId="G-MPJCQW41XD" />
     </html>
   );

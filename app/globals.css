@@ -1,9 +1,103 @@
 @import "tailwindcss";
 
-@theme inline {
-  --font-sans: var(--font-inter);
+/*
+ * Design tokens from docs/desain/README.md (approved 1 Oct 2026), the same visual language as the
+ * investor portal: the Hutan/Hijau SMVC palette, Plus Jakarta Sans and IBM Plex Mono, 10/16/20px
+ * radii and a 1240px container. The default Tailwind palette is reset, so markup can only use
+ * these tokens, never ad-hoc hex values.
+ */
+@theme {
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, Menlo, monospace;
+
+  --color-*: initial;
+  --color-white: #ffffff;
+
+  /* Brand: Mint, the light greens used on Hutan, Hijau SMVC, Hijau tindakan, Hutan */
+  --color-brand-50: #e1f5ee;
+  --color-brand-100: #b9e3d3;
+  --color-brand-200: #80d4b8;
+  --color-brand-300: #a9c9be;
+  --color-brand-400: #45bc97;
+  --color-brand-600: #0e8f6a;
+  --color-brand-700: #0a6650;
+  /* Lines on Hutan: button borders and the hairlines between stat cells */
+  --color-brand-800: #2c6b5b;
+  --color-brand-850: #1e5a4b;
+  --color-brand-900: #04342c;
+
+  /* Text: Tinta, Teks kedua, Lumut, Samar */
+  --color-ink: #13201c;
+  --color-muted: #45554f;
+  --color-subtle: #5a6b64;
+  --color-faint: #7a8a83;
+
+  /* Surfaces: Kertas (alternating sections), Permukaan, Permukaan redup, neutral pill */
+  --color-paper: #f3f5f2;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f8faf7;
+  --color-surface-sunken: #ecefec;
+
+  /* Lines: Garis tipis (rows), Garis (cards), Garis kontrol (inputs, secondary buttons) */
+  --color-line: #eef2ee;
+  --color-line-strong: #dfe5df;
+  --color-line-control: #c9d3cd;
+
+  /* Status pills (always with text): ok = brand-50/brand-700, mute = surface-sunken/muted */
+  --color-info-50: #e6edf8;
+  --color-info-700: #2a55a0;
+  --color-warn-50: #fbefdc;
+  --color-warn-700: #8a4a0c;
+  --color-danger-50: #fbeae6;
+  --color-danger-700: #a3341d;
+  /* Fourth company-tile pair */
+  --color-violet-50: #eeedfe;
+  --color-violet-700: #3c3489;
+
+  --radius-control: 10px;
+  --radius-tile: 10px;
+  --radius-note: 12px;
+  --radius-card: 16px;
+  --radius-hero: 20px;
+
+  --container-page: 1240px;
 }
 
-*, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { font-family: var(--font-sans), -apple-system, sans-serif; background: #fff; color: #171717; }
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-surface font-sans text-base leading-[1.6] text-ink antialiased;
+  }
+  /* Keyboard focus is always visible. */
+  :focus-visible {
+    outline: 2px solid var(--color-brand-600);
+    outline-offset: 2px;
+  }
+  a {
+    @apply text-brand-700 hover:text-brand-900;
+  }
+  /* Plain links inside text (no classes) are underlined, not only coloured (WCAG 1.4.1). */
+  a:not([class]) {
+    text-decoration-line: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
+  }
+  .font-mono {
+    font-variant-numeric: tabular-nums;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import { ContactButton } from './ContactForm'
+import { ArrowRightIcon } from './icons'
 
 export default function Cta() {
   return (
@@ -15,13 +16,8 @@ export default function Cta() {
             We&#39;re open to early conversations — no deck required. What matters is a solid idea and a founder who is serious about building something real in Indonesia.
           </p>
         </div>
-        <ContactButton style={{
-          background: '#0E8F6A', color: '#E1F5EE', padding: '14px 28px',
-          borderRadius: 9, fontSize: 14, fontWeight: 500, border: 'none', cursor: 'pointer',
-          fontFamily: 'inherit', whiteSpace: 'nowrap' as const,
-          display: 'flex', alignItems: 'center', gap: 7, flexShrink: 0,
-        }}>
-          Get in touch <i className="ti ti-arrow-right" />
+        <ContactButton className="inline-flex min-h-11 shrink-0 items-center gap-2 whitespace-nowrap rounded-control bg-brand-400 px-7 text-sm font-bold text-brand-900 hover:bg-brand-200">
+          Get in touch <ArrowRightIcon size={16} />
         </ContactButton>
       </div>
     </div>

@@ -1,21 +1,23 @@
+import { AwardIcon, BankIcon, CheckIcon, MapPinIcon, RocketIcon } from './icons'
+
 const criteria = [
   {
-    icon: 'ti ti-map-pin',
+    Icon: MapPinIcon,
     text: 'Indonesia-first market focus',
     sub: 'Solutions designed for local needs — not a copy-paste from Western playbooks.',
   },
   {
-    icon: 'ti ti-award',
+    Icon: AwardIcon,
     text: 'Committed founders',
     sub: 'Not a side project. We need founders who are all-in and ready for intensive collaboration.',
   },
   {
-    icon: 'ti ti-building-bank',
+    Icon: BankIcon,
     text: 'Regulated or B2B industries',
     sub: 'LegalTech, FinTech, GovTech, or enterprise SaaS — where we have the deepest unfair advantage.',
   },
   {
-    icon: 'ti ti-rocket',
+    Icon: RocketIcon,
     text: 'Pre-seed to seed stage',
     sub: 'We\'re most effective early — when the foundational decisions are still being shaped.',
   },
@@ -42,12 +44,12 @@ export default function WhoWeLookFor() {
               background: '#fff', padding: '20px 26px',
               borderBottom: i < criteria.length - 1 ? '1px solid #f0f0f0' : 'none',
             }}>
-              <i className={c.icon} style={{ fontSize: 20, color: '#0E8F6A', width: 26, flexShrink: 0 }} />
+              <c.Icon size={20} className="w-[26px] shrink-0 text-brand-600" />
               <div>
                 <div style={{ fontSize: 14, fontWeight: 500, color: '#171717' }}>{c.text}</div>
                 <div style={{ fontSize: 12, color: '#888', marginTop: 2 }}>{c.sub}</div>
               </div>
-              <i className="ti ti-check" style={{ marginLeft: 'auto', fontSize: 16, color: '#0E8F6A' }} />
+              <CheckIcon size={16} className="ml-auto shrink-0 text-brand-600" />
             </div>
           ))}
         </div>

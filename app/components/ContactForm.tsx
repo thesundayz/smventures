@@ -2,8 +2,10 @@
 
 // The contact form, in a dialog opened by "Pitch your idea" (Hero) and "Get in touch" (Cta).
 // It posts to /api/contact. Whatever happens, what was typed stays in the form until it is sent.
-import { type CSSProperties, type FormEvent, type ReactNode, useEffect, useRef, useState } from 'react'
-import { CONTACT_KINDS, CONTACT_MESSAGES, type ContactField, type ContactKind, KIND_LABELS, LINKEDIN_URL } from '../lib/contact'
+import { type FormEvent, type ReactNode, useEffect, useRef, useState } from 'react'
+import type { Dictionary } from '@/app/i18n'
+import { CONTACT_KINDS, CONTACT_MESSAGES, type ContactField, type ContactKind, LINKEDIN_URL } from '../lib/contact'
+import { CloseIcon } from './icons'
 
 const OPEN_EVENT = 'smv:open-contact'
 
@@ -13,9 +15,9 @@ export function openContact(kind?: ContactKind) {
 }
 
 /** A button that opens the contact dialog; styling is the caller's. */
-export function ContactButton({ kind, style, children }: { kind?: ContactKind; style: CSSProperties; children: ReactNode }) {
+export function ContactButton({ kind, className, children }: { kind?: ContactKind; className: string; children: ReactNode }) {
   return (
-    <button type="button" onClick={() => openContact(kind)} style={style}>
+    <button type="button" onClick={() => openContact(kind)} className={className}>
       {children}
     </button>
   )
@@ -29,14 +31,13 @@ type Status =
 
 const EMPTY = { name: '', email: '', organisation: '', kind: '', message: '', website: '' }
 
-const label: CSSProperties = { display: 'block', fontSize: 13, fontWeight: 500, color: '#171717', marginBottom: 6 }
-const input: CSSProperties = {
-  width: '100%', fontSize: 14, padding: '10px 12px', borderRadius: 8, border: '1px solid #ddd',
-  fontFamily: 'inherit', color: '#171717', background: '#fff',
-}
-const fieldError: CSSProperties = { fontSize: 12, color: '#B42318', marginTop: 4 }
+const label = 'mb-1.5 block text-[13px] font-semibold text-muted'
+const input =
+  'block w-full min-h-11 rounded-control border border-line-control bg-surface px-3 text-[15px] text-ink ' +
+  'focus:border-brand-600 focus:outline-2 focus:outline-offset-1 focus:outline-brand-600 aria-[invalid=true]:border-danger-700'
+const fieldError = 'mt-1 text-xs text-danger-700'
 
-export default function ContactForm() {
+export default function ContactForm({ t }: { t: Dictionary['contact'] }) {
   const [open, setOpen] = useState(false)
   const [values, setValues] = useState(EMPTY)
   const [errors, setErrors] = useState<Partial<Record<ContactField, string>>>({})
@@ -113,93 +114,85 @@ export default function ContactForm() {
       onClick={(e) => {
         if (e.target === e.currentTarget) setOpen(false)
       }}
-      style={{
-        position: 'fixed', inset: 0, zIndex: 200, background: 'rgba(4,52,44,0.55)',
-        display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16,
-      }}
+      className="fixed inset-0 z-[200] flex items-center justify-center bg-brand-900/55 p-4"
     >
       <div
         role="dialog"
         aria-modal="true"
         aria-labelledby="contact-title"
-        style={{
-          background: '#fff', borderRadius: 14, width: '100%', maxWidth: 520, maxHeight: 'calc(100vh - 32px)',
-          overflowY: 'auto', padding: '28px 24px', boxShadow: '0 20px 60px rgba(0,0,0,0.25)',
-        }}
+        className="max-h-[calc(100vh-32px)] w-full max-w-[520px] overflow-y-auto rounded-card bg-surface px-6 py-7 shadow-2xl sm:px-8"
       >
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12, marginBottom: 6 }}>
-          <h2 id="contact-title" style={{ fontSize: 22, fontWeight: 600, letterSpacing: -0.4, color: '#171717', margin: 0 }}>
-            Let&#39;s talk
+        <div className="mb-1.5 flex items-start justify-between gap-3">
+          <h2 id="contact-title" className="m-0 text-2xl font-extrabold tracking-[-0.02em] text-ink">
+            {t.title}
           </h2>
           <button
             type="button"
             onClick={() => setOpen(false)}
-            aria-label="Close"
-            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4, color: '#666' }}
+            aria-label={t.close}
+            className="-mt-2 -mr-2 inline-flex size-11 shrink-0 items-center justify-center rounded-control text-subtle hover:bg-surface-muted hover:text-ink"
           >
-            <i className="ti ti-x" style={{ fontSize: 20 }} />
+            <CloseIcon size={20} />
           </button>
         </div>
-        <p style={{ fontSize: 14, color: '#666', lineHeight: 1.6, margin: '0 0 20px' }}>
-          Tell us a bit about yourself and what you have in mind. No deck required.
-        </p>
+        <p className="mb-5 text-sm leading-relaxed text-subtle">{t.intro}</p>
 
         {status.state === 'sent' ? (
-          <div role="status" style={{ background: '#E1F5EE', color: '#04342C', borderRadius: 8, padding: '14px 16px', fontSize: 14, lineHeight: 1.6 }}>
+          <div role="status" className="rounded-note bg-brand-50 px-4 py-3.5 text-sm leading-relaxed text-brand-900">
             {status.message}
           </div>
         ) : (
-          <form onSubmit={submit} noValidate style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+          <form onSubmit={submit} noValidate className="flex flex-col gap-4">
             <div>
-              <label htmlFor="contact-name" style={label}>Name</label>
-              <input id="contact-name" ref={firstFieldRef} value={values.name} onChange={set('name')} autoComplete="name" required maxLength={100} style={input} aria-invalid={Boolean(errors.name)} />
-              {errors.name && <p style={fieldError}>{errors.name}</p>}
+              <label htmlFor="contact-name" className={label}>{t.name}</label>
+              <input id="contact-name" ref={firstFieldRef} value={values.name} onChange={set('name')} autoComplete="name" required maxLength={100} className={input} aria-invalid={Boolean(errors.name)} />
+              {errors.name && <p className={fieldError}>{errors.name}</p>}
             </div>
             <div>
-              <label htmlFor="contact-email" style={label}>Email</label>
-              <input id="contact-email" type="email" value={values.email} onChange={set('email')} autoComplete="email" required maxLength={200} style={input} aria-invalid={Boolean(errors.email)} />
-              {errors.email && <p style={fieldError}>{errors.email}</p>}
+              <label htmlFor="contact-email" className={label}>{t.email}</label>
+              <input id="contact-email" type="email" value={values.email} onChange={set('email')} autoComplete="email" required maxLength={200} className={input} aria-invalid={Boolean(errors.email)} />
+              {errors.email && <p className={fieldError}>{errors.email}</p>}
             </div>
             <div>
-              <label htmlFor="contact-organisation" style={label}>
-                Organisation <span style={{ fontWeight: 400, color: '#999' }}>(optional)</span>
+              <label htmlFor="contact-organisation" className={label}>
+                {t.organisation} <span className="font-normal text-faint">{t.optional}</span>
               </label>
-              <input id="contact-organisation" value={values.organisation} onChange={set('organisation')} autoComplete="organization" maxLength={150} style={input} aria-invalid={Boolean(errors.organisation)} />
-              {errors.organisation && <p style={fieldError}>{errors.organisation}</p>}
+              <input id="contact-organisation" value={values.organisation} onChange={set('organisation')} autoComplete="organization" maxLength={150} className={input} aria-invalid={Boolean(errors.organisation)} />
+              {errors.organisation && <p className={fieldError}>{errors.organisation}</p>}
             </div>
             <div>
-              <label htmlFor="contact-kind" style={label}>What is this about?</label>
-              <select id="contact-kind" value={values.kind} onChange={set('kind')} required style={input} aria-invalid={Boolean(errors.kind)}>
+              <label htmlFor="contact-kind" className={label}>{t.kind}</label>
+              <select id="contact-kind" value={values.kind} onChange={set('kind')} required className={input} aria-invalid={Boolean(errors.kind)}>
                 <option value="" disabled>
-                  Choose one
+                  {t.chooseOne}
                 </option>
                 {CONTACT_KINDS.map((k) => (
                   <option key={k} value={k}>
-                    {KIND_LABELS[k]}
+                    {t.kinds[k]}
                   </option>
                 ))}
               </select>
-              {errors.kind && <p style={fieldError}>{errors.kind}</p>}
+              {errors.kind && <p className={fieldError}>{errors.kind}</p>}
             </div>
             <div>
-              <label htmlFor="contact-message" style={label}>Message</label>
-              <textarea id="contact-message" value={values.message} onChange={set('message')} required rows={5} maxLength={5000} style={{ ...input, resize: 'vertical' }} aria-invalid={Boolean(errors.message)} />
-              {errors.message && <p style={fieldError}>{errors.message}</p>}
+              <label htmlFor="contact-message" className={label}>{t.message}</label>
+              <textarea id="contact-message" value={values.message} onChange={set('message')} required rows={5} maxLength={5000} className={`${input} resize-y py-3`} aria-invalid={Boolean(errors.message)} />
+              {errors.message && <p className={fieldError}>{errors.message}</p>}
             </div>
             {/* Honeypot: hidden from people and screen readers; bots fill it in. */}
-            <div aria-hidden="true" style={{ position: 'absolute', left: -10000, width: 1, height: 1, overflow: 'hidden' }}>
-              <label htmlFor="contact-website">Website</label>
+            <div aria-hidden="true" className="absolute -left-[10000px] size-px overflow-hidden">
+              <label htmlFor="contact-website">{t.website}</label>
               <input id="contact-website" tabIndex={-1} autoComplete="off" value={values.website} onChange={set('website')} />
             </div>
 
             {status.state === 'error' && (
-              <div role="alert" style={{ background: '#FEF3F2', color: '#912018', borderRadius: 8, padding: '12px 14px', fontSize: 13, lineHeight: 1.6 }}>
+              <div role="alert" className="rounded-note bg-danger-50 px-3.5 py-3 text-[13px] leading-relaxed text-danger-700">
                 {status.message}
                 {status.linkedIn && (
                   <>
                     {' '}
-                    <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" style={{ color: '#0A6650', fontWeight: 500 }}>
-                      Open LinkedIn
+                    <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="font-semibold text-brand-700 underline underline-offset-2">
+                      {t.openLinkedIn}
                     </a>
                   </>
                 )}
@@ -209,13 +202,9 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={status.state === 'sending'}
-              style={{
-                background: '#0A6650', color: '#E1F5EE', padding: '12px 20px', borderRadius: 8, fontSize: 14,
-                fontWeight: 500, border: 'none', cursor: status.state === 'sending' ? 'wait' : 'pointer', fontFamily: 'inherit',
-                opacity: status.state === 'sending' ? 0.7 : 1,
-              }}
+              className="inline-flex min-h-11 items-center justify-center rounded-control bg-brand-700 px-[18px] text-sm font-bold text-white hover:bg-brand-900 disabled:cursor-wait disabled:opacity-70"
             >
-              {status.state === 'sending' ? 'Sending…' : 'Send message'}
+              {status.state === 'sending' ? t.sending : t.send}
             </button>
           </form>
         )}

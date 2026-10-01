@@ -1,47 +1,47 @@
-'use client'
-
-import { useSyncExternalStore } from 'react'
+// Site footer (docs/desain/layar/Situs-Beranda.html): logo, where we are, the securities
+// disclaimer (on every page), and links out.
 import Image from 'next/image'
+import type { Dictionary } from '@/app/i18n'
+import { INSTAGRAM, INVESTOR_PORTAL, LINKEDIN_COMPANY, LOGO_URL } from '@/app/lib/links'
+import CurrentYear from './CurrentYear'
 
-const subscribe = () => () => {}
-
-export default function Footer({ buildYear }: { buildYear: number }) {
-  // Prerendered HTML carries the build year; after hydration the client shows the current year
-  const year = useSyncExternalStore(subscribe, () => new Date().getFullYear(), () => buildYear)
-
+export default function Footer({ t, logoAlt, buildYear }: { t: Dictionary['footer']; logoAlt: string; buildYear: number }) {
+  const [before, after] = t.copyright.split('{year}')
+  const links = [
+    { href: LINKEDIN_COMPANY, label: t.linkedin },
+    { href: INSTAGRAM, label: t.instagram },
+    { href: INVESTOR_PORTAL, label: t.investorPortal },
+  ]
   return (
-    <footer style={{ borderTop: '1px solid #f0f0f0' }}>
-      <div
-        className="flex flex-col gap-4 items-center text-center md:flex-row md:items-center md:justify-between md:text-left px-5 md:px-[48px] py-[26px]"
-        style={{ maxWidth: 1100, margin: '0 auto' }}
-      >
-        <Image
-          src="https://res.cloudinary.com/ddr9t2l0o/image/upload/v1774944179/smvc_logo_transparent_zlwinx.png"
-          alt="SMVC Venture Capital"
-          width={93}
-          height={36}
-          style={{ display: 'block' }}
-        />
-        <div style={{ fontSize: 12, color: '#aaa' }}>© {year} SMVentures · Jakarta, Indonesia</div>
-        <div style={{ display: 'flex', gap: 20 }}>
-          {[
-            { label: 'LinkedIn', href: 'https://www.linkedin.com/company/smventures' },
-            { label: 'Instagram', href: 'https://www.instagram.com/smventures' },
-            { label: 'Contact', href: '#contact' },
-          ].map(({ label, href }) => (
-            <a
-              key={label}
-              href={href}
-              target={href.startsWith('http') ? '_blank' : undefined}
-              rel="noopener noreferrer"
-              style={{ fontSize: 12, color: '#aaa', textDecoration: 'none' }}
-              onMouseEnter={e => (e.currentTarget.style.color = '#0E8F6A')}
-              onMouseLeave={e => (e.currentTarget.style.color = '#aaa')}
-            >
-              {label}
-            </a>
-          ))}
+    <footer className="bg-brand-900 text-brand-100">
+      <div className="mx-auto flex max-w-page flex-col gap-8 px-4 py-12 md:flex-row md:items-start md:justify-between md:px-10">
+        <div>
+          <Image src={LOGO_URL} alt={logoAlt} width={93} height={36} className="block brightness-0 invert" />
+          <p className="mt-3 max-w-[40ch] text-[13px] leading-relaxed">
+            {t.tagline} {t.disclaimer}
+          </p>
+          <p className="mt-3 text-xs text-brand-300">
+            {before}
+            <CurrentYear buildYear={buildYear} />
+            {after}
+          </p>
         </div>
+        <nav aria-label={t.linksLabel}>
+          <ul className="flex flex-wrap gap-x-6 gap-y-1 text-[13px]">
+            {links.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center text-brand-100 underline-offset-2 hover:text-white hover:underline"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
     </footer>
   )

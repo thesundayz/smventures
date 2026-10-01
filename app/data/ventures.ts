@@ -36,7 +36,7 @@ export const ventures: Venture[] = [
     logo: '/images/logo-tandatangan.png',
     hero: {
       photo: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1400&q=80',
-      icon: 'ti ti-file-certificate',
+      icon: 'file-certificate',
       title: "Indonesia's e-signature\nplatform, built for compliance.",
       desc: 'TTE, e-Meterai, document management, and HRIS — all in one platform serving corporate clients across Indonesia.',
       domainColor: '#80D4B8',
@@ -55,7 +55,7 @@ export const ventures: Venture[] = [
     logo: '/images/logo-intermediatek.png',
     hero: {
       photo: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1400&q=80',
-      icon: 'ti ti-cpu',
+      icon: 'cpu',
       title: 'Digital transformation\nfor Indonesian businesses.',
       desc: 'End-to-end IT consulting and technology solutions — from infrastructure to software, built by practitioners who\'ve shipped real products.',
       domainColor: '#AFA9EC',
@@ -74,7 +74,7 @@ export const ventures: Venture[] = [
     logo: '/images/logo-sahamku.png',
     hero: {
       photo: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1400&q=80',
-      icon: 'ti ti-chart-line',
+      icon: 'chart-line',
       title: "Empowering Indonesia's\nretail investors.",
       desc: 'Tools, insights, and portfolio management for Indonesian retail investors navigating the local stock market with confidence.',
       domainColor: '#FAC775',
@@ -93,7 +93,7 @@ export const ventures: Venture[] = [
     logo: '/images/logo-neracaku.png',
     hero: {
       photo: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1400&q=80',
-      icon: 'ti ti-calculator',
+      icon: 'calculator',
       title: 'Bookkeeping made simple\nfor Indonesian SMEs.',
       desc: 'Accessible financial management for small businesses — no accountant on payroll required. Track, report, and stay on top of your numbers.',
       domainColor: '#85B7EB',
@@ -112,7 +112,7 @@ export const ventures: Venture[] = [
     logo: '/images/logo-natara.png',
     hero: {
       photo: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1400&q=80',
-      icon: 'ti ti-building',
+      icon: 'building',
       title: 'Professional design & build\nacross Jabodetabek & Bandung.',
       desc: 'Residential, commercial, renovation, and industrial — end-to-end with 8+ years of experience and full project transparency.',
       domainColor: '#F0997B',

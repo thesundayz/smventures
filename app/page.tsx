@@ -1,4 +1,3 @@
-import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import StatsBar from "./components/StatsBar";
 import HowWeWork from "./components/HowWeWork";
@@ -8,11 +7,6 @@ import Portfolio from "./components/Portfolio";
 import UnfairAdvantages from "./components/UnfairAdvantages";
 import WhoWeLookFor from "./components/WhoWeLookFor";
 import Cta from "./components/Cta";
-import Footer from "./components/Footer";
-import ContactForm from "./components/ContactForm";
-
-// Evaluated at build time (the page is statically prerendered)
-const buildYear = new Date().getFullYear();
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -44,7 +38,6 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Navbar />
       <main>
         <Hero />
         <StatsBar />
@@ -56,8 +49,6 @@ export default function Home() {
         <WhoWeLookFor />
         <Cta />
       </main>
-      <Footer buildYear={buildYear} />
-      <ContactForm />
     </>
   );
 }

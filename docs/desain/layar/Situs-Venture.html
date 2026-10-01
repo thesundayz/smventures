@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Halaman venture (WS-3) · Mockup SMVC</title>
+<!-- Acuan visual. Angka dan nama adalah data contoh. Lebar rancangan: 1440px. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#0A6650}a:hover{color:#04342C}
+.app{font-family:'Plus Jakarta Sans',ui-sans-serif,system-ui,sans-serif;background:#F3F5F2;color:#13201C;font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.app *{box-sizing:border-box}
+.mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+.num{font-variant-numeric:tabular-nums}
+.top{background:#FFFFFF;border-bottom:1px solid #DFE5DF}
+.topin{max-width:1240px;margin:0 auto;padding:0 40px;height:68px;display:flex;align-items:center;gap:28px}
+.logo{display:flex;align-items:baseline;gap:10px;text-decoration:none;color:#13201C}
+.logo b{font-weight:800;font-size:20px;letter-spacing:.04em}
+.logo b i{font-style:normal;color:#0E8F6A}
+.logo span{font-size:13px;color:#5A6B64;font-weight:600}
+.nav{display:flex;gap:4px;flex:1}
+.nav a{text-decoration:none;color:#45554F;font-weight:600;font-size:14px;padding:8px 12px;border-radius:8px}
+.nav a.on{background:#E1F5EE;color:#0A6650}
+.tool{display:flex;align-items:center;gap:12px}
+.ibtn{width:40px;height:40px;border-radius:10px;border:1px solid #DFE5DF;background:#FFFFFF;display:grid;place-items:center;color:#45554F;position:relative;cursor:pointer;font:inherit}
+.dot{position:absolute;top:7px;right:8px;width:8px;height:8px;border-radius:50%;background:#C2410C;border:2px solid #FFFFFF}
+.ava{width:40px;height:40px;border-radius:50%;background:#04342C;color:#E1F5EE;display:grid;place-items:center;font-weight:700;font-size:14px}
+.demo{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A4A0C;background:#FBEFDC;border-radius:6px;padding:4px 8px}
+.wrap{max-width:1240px;margin:0 auto;padding:32px 40px 64px;display:flex;flex-direction:column;gap:24px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#0A6650}
+h1{margin:0;font-size:34px;line-height:1.15;font-weight:800;letter-spacing:-.02em}
+h2{margin:0;font-size:19px;font-weight:700;letter-spacing:-.01em}
+h3{margin:0;font-size:15px;font-weight:700}
+p{margin:0}
+.muted{color:#5A6B64}
+.small{font-size:13px}
+.card{background:#FFFFFF;border:1px solid #DFE5DF;border-radius:16px}
+.pad{padding:22px 24px}
+.row{display:flex;gap:16px;align-items:center}
+.between{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.side{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:24px;align-items:start}
+.stat .k{font-size:13px;font-weight:600;color:#5A6B64;display:flex;align-items:center;gap:6px}
+.stat .v{font-size:30px;font-weight:800;letter-spacing:-.02em;margin-top:6px;font-variant-numeric:tabular-nums}
+.stat .s{font-size:13px;color:#5A6B64;margin-top:4px}
+.qm{width:18px;height:18px;border-radius:50%;border:1px solid #B8C4BE;color:#5A6B64;font-size:11px;font-weight:700;display:inline-grid;place-items:center;background:#FFFFFF;cursor:pointer;font-family:inherit;padding:0}
+.hero{background:#04342C;color:#E1F5EE;border-radius:20px;padding:30px 32px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:32px}
+.hero .lab{font-size:13px;font-weight:600;color:#80D4B8}
+.hero .big{font-size:52px;font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-top:8px;font-variant-numeric:tabular-nums;color:#FFFFFF}
+.hero .basis{font-size:13px;color:#A9C9BE;margin-top:10px}
+.hero .mini{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 24px;align-content:center}
+.hero .mini .k{font-size:12px;color:#80D4B8;font-weight:600}
+.hero .mini .v{font-size:22px;font-weight:700;color:#FFFFFF;font-variant-numeric:tabular-nums}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;border-radius:999px;padding:3px 10px;white-space:nowrap}
+.p-ok{background:#E1F5EE;color:#0A6650}.p-warn{background:#FBEFDC;color:#8A4A0C}.p-info{background:#E6EDF8;color:#2A55A0}.p-mute{background:#ECEFEC;color:#45554F}.p-red{background:#FBEAE6;color:#A3341D}
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th{text-align:left;font-size:12px;font-weight:700;color:#5A6B64;text-transform:uppercase;letter-spacing:.06em;padding:12px 16px;border-bottom:1px solid #DFE5DF;background:#F8FAF7}
+.tbl td{padding:14px 16px;border-bottom:1px solid #EEF2EE;vertical-align:middle}
+.tbl tr:last-child td{border-bottom:0}
+.r{text-align:right}
+.co{display:flex;align-items:center;gap:12px}
+.tile{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;font-weight:800;font-size:14px;flex:none}
+.t1{background:#E1F5EE;color:#0A6650}.t2{background:#E6EDF8;color:#2A55A0}.t3{background:#FBEFDC;color:#8A4A0C}.t4{background:#EEEDFE;color:#3C3489}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border-radius:10px;font-weight:700;font-size:14px;border:1px solid transparent;cursor:pointer;font-family:inherit;text-decoration:none}
+.b-pri{background:#0A6650;color:#FFFFFF}.b-sec{background:#FFFFFF;color:#13201C;border-color:#C9D3CD}.b-ghost{background:transparent;color:#0A6650}
+.tabs{display:flex;gap:4px;border-bottom:1px solid #DFE5DF}
+.tabs a{text-decoration:none;color:#5A6B64;font-weight:600;font-size:14px;padding:12px 14px;border-bottom:2px solid transparent;margin-bottom:-1px}
+.tabs a.on{color:#0A6650;border-bottom-color:#0E8F6A}
+.list{display:flex;flex-direction:column}
+.li{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #EEF2EE;align-items:flex-start}
+.li:last-child{border-bottom:0}
+.date{width:52px;flex:none;text-align:center;border:1px solid #DFE5DF;border-radius:10px;padding:6px 0;background:#F8FAF7}
+.date .d{font-size:20px;font-weight:800;line-height:1.1}
+.date .m{font-size:11px;font-weight:700;text-transform:uppercase;color:#5A6B64;letter-spacing:.06em}
+.note{font-size:13px;color:#45554F;background:#F8FAF7;border:1px solid #E5EBE5;border-radius:12px;padding:12px 14px}
+.bar{height:10px;border-radius:999px;background:#ECEFEC;overflow:hidden;display:flex}
+.bar span{display:block;height:100%}
+.field{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#45554F}
+.field input,.field select,.field textarea{min-height:44px;border:1px solid #C9D3CD;border-radius:10px;padding:0 12px;font:inherit;font-size:15px;color:#13201C;background:#FFFFFF}
+.field textarea{padding:12px;min-height:120px}
+.foot{max-width:1240px;margin:0 auto;padding:0 40px 40px;font-size:12px;color:#7A8A83;display:flex;justify-content:space-between}
+.site{font-family:'Plus Jakarta Sans',ui-sans-serif,system-ui,sans-serif;background:#FBFCFA;color:#13201C;line-height:1.55}
+.site *{box-sizing:border-box}
+.sin{max-width:1200px;margin:0 auto;padding:0 48px}
+.snav{height:76px;display:flex;align-items:center;gap:32px}
+.snav nav{display:flex;gap:26px;flex:1;justify-content:center}
+.snav nav a{color:#45554F;text-decoration:none;font-weight:600;font-size:14px}
+.sec{padding:88px 0}
+.kick{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#0E8F6A}
+.disp{font-size:64px;line-height:1.02;font-weight:800;letter-spacing:-.035em;margin:0}
+.h2s{font-size:40px;line-height:1.1;font-weight:800;letter-spacing:-.025em;margin:0}
+.lead{font-size:19px;color:#45554F;max-width:58ch}
+.vc{background:#FFFFFF;border:1px solid #DFE5DF;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:12px;text-decoration:none;color:#13201C}
+</style>
+
+</head>
+<body>
+<div class="site"><header class="sin snav"><a class="logo" href="Situs-Beranda.html"><b style="font-size:22px">SM<i>V</i>C</b><span>Venture builder</span></a>
+<nav aria-label="Main"><a href="Situs-Beranda.html">About</a><a href="Situs-Venture.html">Portfolio</a><a href="Situs-Beranda.html">People</a><a href="Situs-Investor.html">For shareholders</a><a href="Situs-Beranda.html">Insights</a></nav>
+<div class="row" style="gap:10px"><span class="small muted" style="font-weight:600">EN · ID</span><a class="btn b-sec" href="Main.html">Login as Investor</a></div></header>
+<section class="sec" style="padding-bottom:56px"><div class="sin" style="display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:56px;align-items:start">
+<div><a class="small" href="Situs-Beranda.html" style="text-decoration:none">← Portfolio</a><div class="row" style="margin-top:20px"><span class="tile t1" style="width:64px;height:64px;font-size:22px;border-radius:16px">TT</span><span class="pill p-ok">Flagship</span></div>
+<h1 class="disp" style="margin-top:20px;font-size:56px">Tandatangan.ID</h1><p class="lead" style="margin-top:16px">Office workflows for Indonesian companies, built on certified e-signature and e-meterai partners.</p>
+<div class="row" style="margin-top:24px"><a class="btn b-pri" href="Situs-Venture.html">Visit tandatangan.id</a></div></div>
+<dl class="card pad" style="display:grid;grid-template-columns:140px 1fr;gap:14px 16px;margin:0">
+<dt class="muted small">Founded</dt><dd style="margin:0;font-weight:600">June 2024</dd><dt class="muted small">Sector</dt><dd style="margin:0;font-weight:600">LegalTech</dd><dt class="muted small">Products</dt><dd style="margin:0;font-weight:600">E-Signature, E-Office, KIARA, ASTA</dd><dt class="muted small">Based in</dt><dd style="margin:0;font-weight:600">Jakarta Selatan</dd><dt class="muted small">SMVC role</dt><dd style="margin:0;font-weight:600">Co-founder, operating partner</dd></dl>
+</div></section>
+<section style="padding-bottom:88px"><div class="sin" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px">
+<div class="card pad"><div class="kick">The problem</div><p style="margin-top:10px;color:#45554F">[Two sentences on the paperwork and approval delays the company solves.]</p></div>
+<div class="card pad"><div class="kick">What we built</div><p style="margin-top:10px;color:#45554F">[Two sentences on the product and who uses it.]</p></div>
+<div class="card pad"><div class="kick">Where it is now</div><p style="margin-top:10px;color:#45554F">[Milestones the company is comfortable publishing.]</p></div></div></section>
+<footer style="background:#04342C;color:#B9E3D3;padding:48px 0"><div class="sin between" style="align-items:flex-start"><div><b style="color:#FFFFFF;font-size:20px">SM<span style="color:#80D4B8">V</span>C</b><p class="small" style="margin-top:8px;max-width:40ch">Venture builder based in Jakarta. Nothing on this site is an offer of securities.</p></div><div class="small" style="display:flex;gap:24px"><span>LinkedIn</span><span>Instagram</span><span>Privacy</span><span>investor.smventures.id</span></div></div></footer></div>
+</body>
+</html>

@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { ExternalLinkIcon, GitHubIcon, GlobeIcon, InstagramIcon, LinkedInIcon } from './icons'
 
 const people = [
   {
@@ -11,9 +12,9 @@ const people = [
     bio: 'Solo founder and developer behind SMVentures and its portfolio companies. Combines deep technical hands-on capability with business strategy — from architecting production systems to closing corporate clients. Operates across all ventures as managing partner, embedding directly into each company\'s product, operations, and growth.',
     tags: ['Full-stack engineering', 'Product strategy', 'B2B SaaS', 'LegalTech', 'Jakarta'],
     links: [
-      { icon: 'ti ti-brand-linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/thesundayz/' },
-      { icon: 'ti ti-brand-github', label: 'GitHub', href: 'https://github.com/thesundayz' },
-      { icon: 'ti ti-world', label: 'Website', href: 'https://www.sandimardiansyah.com/' },
+      { Icon: LinkedInIcon, label: 'LinkedIn', href: 'https://www.linkedin.com/in/thesundayz/' },
+      { Icon: GitHubIcon, label: 'GitHub', href: 'https://github.com/thesundayz' },
+      { Icon: GlobeIcon, label: 'Website', href: 'https://www.sandimardiansyah.com/' },
     ],
     photoBg: 'linear-gradient(135deg,#E1F5EE,#80D4B8)',
     photo: '/images/sandi.png',
@@ -28,9 +29,9 @@ const people = [
     bio: "Founder & CEO of Bubu.com — Indonesia's first and leading digital agency, founded in 1996. Angel investor, startup mentor, and one of the most networked figures in Southeast Asian tech. Former Managing Partner at Nusantara Ventures, co-founder of Silicon Valley Asia Technology Alliance. Recognized by Forbes Indonesia as \"Inspiring Women Honor Roll\" and Globe Asia's \"99 Most Powerful Women.\"",
     tags: ['Angel investor', 'Bubu.com', 'Nusantara Ventures', 'KADIN', 'Silicon Valley'],
     links: [
-      { icon: 'ti ti-brand-linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/shintabubu/' },
-      { icon: 'ti ti-brand-instagram', label: 'Instagram', href: 'https://www.instagram.com/shintabubu' },
-      { icon: 'ti ti-external-link', label: 'bubu.com', href: 'https://www.bubu.com' },
+      { Icon: LinkedInIcon, label: 'LinkedIn', href: 'https://www.linkedin.com/in/shintabubu/' },
+      { Icon: InstagramIcon, label: 'Instagram', href: 'https://www.instagram.com/shintabubu' },
+      { Icon: ExternalLinkIcon, label: 'bubu.com', href: 'https://www.bubu.com' },
     ],
     photoBg: 'linear-gradient(135deg,#EEEDFE,#AFA9EC)',
     photo: '/images/shinta-dhanuwardoyo.jpg',
@@ -124,7 +125,7 @@ export default function People() {
                     {p.links.map(l => (
                       <a key={l.label} href={l.href} target={l.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer"
                         style={{ fontSize: 12, color: '#888', display: 'flex', alignItems: 'center', gap: 5, textDecoration: 'none' }}>
-                        <i className={l.icon} style={{ fontSize: 15 }} /> {l.label}
+                        <l.Icon size={15} /> {l.label}
                       </a>
                     ))}
                   </div>

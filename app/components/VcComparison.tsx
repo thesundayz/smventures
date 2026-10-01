@@ -1,3 +1,5 @@
+import { CheckIcon, MinusIcon } from './icons'
+
 const vcItems = [
   'Capital only, quarterly board updates',
   'Founder figures out operations alone',
@@ -35,7 +37,7 @@ export default function VcComparison() {
             <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 12 }}>
               {vcItems.map(item => (
                 <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 9, fontSize: 13 }}>
-                  <i className="ti ti-minus" style={{ marginTop: 1, flexShrink: 0, fontSize: 15, color: '#bbb' }} />
+                  <MinusIcon size={15} className="mt-0.5 shrink-0 text-faint" />
                   <span style={{ color: '#888' }}>{item}</span>
                 </div>
               ))}
@@ -53,7 +55,7 @@ export default function VcComparison() {
             <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 12 }}>
               {ourItems.map(item => (
                 <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 9, fontSize: 13 }}>
-                  <i className="ti ti-check" style={{ marginTop: 1, flexShrink: 0, fontSize: 15, color: '#45BC97' }} />
+                  <CheckIcon size={15} className="mt-0.5 shrink-0 text-brand-400" />
                   <span style={{ color: '#80D4B8' }}>{item}</span>
                 </div>
               ))}

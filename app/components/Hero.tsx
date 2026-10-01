@@ -4,6 +4,15 @@ import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { ventures } from '../data/ventures'
 import { openContact } from './ContactForm'
+import { ArrowRightIcon, BuildingIcon, CalculatorIcon, ChartLineIcon, CpuIcon, FileCheckIcon, type IconComponent } from './icons'
+
+const HERO_ICONS: Record<string, IconComponent> = {
+  'file-certificate': FileCheckIcon,
+  cpu: CpuIcon,
+  'chart-line': ChartLineIcon,
+  calculator: CalculatorIcon,
+  building: BuildingIcon,
+}
 
 const DURATION = 4500
 
@@ -28,6 +37,7 @@ export default function Hero() {
 
   const venture = ventures[current]
   const s = venture.hero
+  const SlideIcon = HERO_ICONS[s.icon] ?? FileCheckIcon
   const upcoming = ventures[(current + 1) % ventures.length].hero
 
   return (
@@ -106,7 +116,7 @@ export default function Hero() {
             borderRadius: 20, marginBottom: 16, width: 'fit-content',
             color: s.badgeColor, background: s.badgeBg, border: `1px solid ${s.badgeBorder}`,
           }}>
-            <i className={s.icon} /> {venture.tag}
+            <SlideIcon size={13} /> {venture.tag}
           </div>
           <div className="text-[26px] md:text-[40px]" style={{ fontWeight: 600, color: '#fff', letterSpacing: -1, lineHeight: 1.12, marginBottom: 12, whiteSpace: 'pre-line' }}>
             {s.title}
@@ -130,7 +140,7 @@ export default function Hero() {
                 display: 'flex', alignItems: 'center', gap: 6,
               }}
             >
-              See portfolio <i className="ti ti-arrow-right" />
+              See portfolio <ArrowRightIcon size={14} />
             </button>
           </div>
         </div>
