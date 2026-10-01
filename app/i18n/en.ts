@@ -124,6 +124,108 @@ export const en = {
     disclaimer:
       'Nothing on this page is an offer of securities. The investor portal is for registered shareholders of SMVC companies only.',
   },
+  about: {
+    metaTitle: 'About',
+    metaDescription:
+      'SMVentures is a venture builder that co-builds and operates companies across Indonesia’s most important industries — LegalTech, FinTech, PropTech, and enterprise SaaS.',
+    howWeWork: {
+      kicker: 'How we work',
+      title: 'Beyond the check.',
+      lead: 'Most investors write a check and wait. We show up — in the product, the org, the pitch room, and the client meetings.',
+      pillars: [
+        {
+          title: 'Advisory & strategy',
+          text: 'Business model design, go-to-market, and competitive positioning — shaped by real operator experience, not theory.',
+        },
+        {
+          title: 'Network & access',
+          text: 'Warm intros to enterprise clients, regulators, partners, and talent that would take years to reach on your own.',
+        },
+        {
+          title: 'Operational partner',
+          text: 'We take a seat as managing partner — not just on the board, but in the day-to-day operations building the company.',
+        },
+      ],
+    },
+    people: {
+      kicker: 'The people',
+      title: 'Who’s behind SMVentures.',
+      lead: 'A founder who builds and an advisor who has been shaping Indonesia’s tech landscape since before the internet was mainstream.',
+      linksLabel: '{name} elsewhere',
+    },
+    comparison: {
+      kicker: 'Venture Builder vs VC',
+      title: 'What makes us different.',
+      lead: 'Venture capital provides capital. Venture builders provide everything else — and then some.',
+      vcLabel: 'Traditional VC',
+      vcTitle: 'Passive by design',
+      vcItems: [
+        'Capital only, quarterly board updates',
+        'Founder figures out operations alone',
+        'Network access is hit-or-miss',
+        'Exits when returns are realized',
+      ],
+      ourLabel: 'SMVentures',
+      ourTitle: 'Active builder',
+      ourItems: [
+        'Advisory + strategy + execution support',
+        'Managing partner embedded in operations',
+        'Direct access to ecosystem & relationships',
+        'Long-term co-builder, not a timer',
+      ],
+    },
+    advantages: {
+      kicker: 'What we bring',
+      title: 'The unfair advantages.',
+      lead: 'Every venture in our ecosystem gets direct access to these capabilities from day one.',
+      items: [
+        {
+          title: 'Product & engineering',
+          text: 'Hands-on technical leadership — product strategy, architecture, and execution from an operator who has shipped.',
+        },
+        {
+          title: 'Corporate network',
+          text: 'Direct access to decision-makers in enterprise, government, and financial institutions across Indonesia.',
+        },
+        {
+          title: 'Regulatory expertise',
+          text: 'Deep familiarity with OJK, Kominfo, BSrE, and the regulatory landscape that trips up most founders.',
+        },
+        {
+          title: 'GTM for Indonesia',
+          text: 'Battle-tested go-to-market playbooks for B2B, enterprise, and SME segments in the Indonesian market.',
+        },
+      ],
+    },
+    lookingFor: {
+      kicker: 'Who we build with',
+      title: 'Who we’re looking for.',
+      lead: 'We’re selective — not because we’re exclusive, but because we go all-in. The fit has to be right on both sides.',
+      criteria: [
+        {
+          title: 'Indonesia-first market focus',
+          text: 'Solutions designed for local needs — not a copy-paste from Western playbooks.',
+        },
+        {
+          title: 'Committed founders',
+          text: 'Not a side project. We need founders who are all-in and ready for intensive collaboration.',
+        },
+        {
+          title: 'Regulated or B2B industries',
+          text: 'LegalTech, FinTech, GovTech, or enterprise SaaS — where we have the deepest unfair advantage.',
+        },
+        {
+          title: 'Pre-seed to seed stage',
+          text: 'We’re most effective early — when the foundational decisions are still being shaped.',
+        },
+      ],
+    },
+    cta: {
+      title: 'Have an idea? Let’s talk.',
+      text: 'We’re open to early conversations — no deck required. What matters is a solid idea and a founder who is serious about building something real in Indonesia.',
+      button: 'Get in touch',
+    },
+  },
   venture: {
     metaTitle: '{name} — SMVentures portfolio',
     back: 'Portfolio',

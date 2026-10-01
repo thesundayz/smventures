@@ -1,10 +1,4 @@
-import Cta from "./components/Cta";
-import HowWeWork from "./components/HowWeWork";
-import People from "./components/People";
 import ShareholdersBand from "./components/ShareholdersBand";
-import UnfairAdvantages from "./components/UnfairAdvantages";
-import VcComparison from "./components/VcComparison";
-import WhoWeLookFor from "./components/WhoWeLookFor";
 import Approach from "./components/home/Approach";
 import HomeHero from "./components/home/HomeHero";
 import PortfolioGrid from "./components/home/PortfolioGrid";
@@ -46,13 +40,6 @@ export default function Home() {
         <PortfolioGrid t={t.home.portfolio} numberWords={t.numberWords} lang="en" />
         <Approach t={t.home.approach} />
         <ShareholdersBand t={t.home.shareholders} />
-        {/* The earlier home sections, until they move to /about (S1-05). */}
-        <HowWeWork />
-        <People />
-        <VcComparison />
-        <UnfairAdvantages />
-        <WhoWeLookFor />
-        <Cta />
       </main>
     </>
   );

@@ -1,25 +1,23 @@
+// "Have an idea? Let's talk." on Hutan, with the button that opens the contact form.
+import type { Dictionary } from '@/app/i18n'
 import { ContactButton } from './ContactForm'
 import { ArrowRightIcon } from './icons'
+import { Container, buttonClass } from './ui'
 
-export default function Cta() {
+export default function Cta({ t }: { t: Dictionary['about']['cta'] }) {
   return (
-    <div id="contact" style={{ background: '#04342C' }}>
-      <div
-        className="flex flex-col gap-6 md:flex-row md:justify-between md:items-center px-5 md:px-[48px] py-[60px]"
-        style={{ maxWidth: 1100, margin: '0 auto',
-      }}>
+    <section id="contact" aria-labelledby="contact-cta-title" className="scroll-mt-20 bg-brand-900">
+      <Container className="flex flex-col gap-6 py-14 md:flex-row md:items-center md:justify-between md:py-16">
         <div>
-          <h2 style={{ fontSize: 28, fontWeight: 600, color: '#80D4B8', letterSpacing: -0.5, marginBottom: 10 }}>
-            Have an idea? Let&#39;s talk.
+          <h2 id="contact-cta-title" className="text-[28px] leading-tight font-extrabold tracking-[-0.02em] text-brand-200 md:text-[34px]">
+            {t.title}
           </h2>
-          <p style={{ fontSize: 14, color: '#45BC97', lineHeight: 1.7, maxWidth: 420 }}>
-            We&#39;re open to early conversations — no deck required. What matters is a solid idea and a founder who is serious about building something real in Indonesia.
-          </p>
+          <p className="mt-3 max-w-[52ch] text-brand-100">{t.text}</p>
         </div>
-        <ContactButton className="inline-flex min-h-11 shrink-0 items-center gap-2 whitespace-nowrap rounded-control bg-brand-400 px-7 text-sm font-bold text-brand-900 hover:bg-brand-200">
-          Get in touch <ArrowRightIcon size={16} />
+        <ContactButton className={`${buttonClass.onDarkPrimary} shrink-0`}>
+          {t.button} <ArrowRightIcon size={16} />
         </ContactButton>
-      </div>
-    </div>
+      </Container>
+    </section>
   )
 }

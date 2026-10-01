@@ -72,6 +72,8 @@ describe('the route', () => {
     // "Pitch your idea" (home hero) opens it with "Pitch an idea" chosen; the copy is in the dictionary.
     assert.match(readFileSync('app/components/home/HomeHero.tsx', 'utf8'), /<ContactButton kind="pitch"[\s\S]*?\{t\.pitch\}/)
     assert.equal(en.home.hero.pitch, 'Pitch your idea')
-    assert.match(readFileSync('app/components/Cta.tsx', 'utf8'), /<ContactButton[\s\S]*?Get in touch/)
+    // "Get in touch" (/about) opens it with nothing chosen.
+    assert.match(readFileSync('app/components/Cta.tsx', 'utf8'), /<ContactButton[\s\S]*?\{t\.button\}/)
+    assert.equal(en.about.cta.button, 'Get in touch')
   })
 })
