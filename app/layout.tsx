@@ -5,6 +5,7 @@ import ContactForm from "./components/ContactForm";
 import Footer from "./components/Footer";
 import Header, { type NavLink } from "./components/Header";
 import { getDictionary } from "./i18n";
+import { publishedInsights } from "./lib/insights";
 import "./globals.css";
 
 // Self-hosted by next/font: no request to Google Fonts from the browser.
@@ -90,6 +91,8 @@ export default function RootLayout({
     { href: "/#portfolio", label: t.nav.portfolio },
     { href: "/about#people", label: t.nav.people },
     { href: "/for-shareholders", label: t.nav.shareholders },
+    // Insights appears once at least one post is published.
+    ...(publishedInsights("en").length > 0 ? [{ href: "/insights", label: t.nav.insights }] : []),
   ];
   return (
     <html lang="en" className={`${jakarta.variable} ${plexMono.variable}`}>

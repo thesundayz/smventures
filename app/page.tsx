@@ -2,7 +2,9 @@ import ShareholdersBand from "./components/ShareholdersBand";
 import Approach from "./components/home/Approach";
 import HomeHero from "./components/home/HomeHero";
 import PortfolioGrid from "./components/home/PortfolioGrid";
+import InsightsSection from "./components/insights/InsightsSection";
 import { getDictionary } from "./i18n";
+import { publishedInsights } from "./lib/insights";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -29,6 +31,7 @@ const jsonLd = {
 
 export default function Home() {
   const t = getDictionary("en");
+  const insights = publishedInsights("en");
   return (
     <>
       <script
@@ -39,6 +42,7 @@ export default function Home() {
         <HomeHero t={t.home.hero} stats={t.home.stats} />
         <PortfolioGrid t={t.home.portfolio} numberWords={t.numberWords} lang="en" />
         <Approach t={t.home.approach} />
+        {insights.length > 0 && <InsightsSection posts={insights} t={t.insights} lang="en" base="/insights" />}
         <ShareholdersBand t={t.home.shareholders} />
       </main>
     </>
