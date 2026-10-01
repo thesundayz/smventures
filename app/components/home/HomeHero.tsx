@@ -10,7 +10,7 @@ import { ArrowRightIcon } from '../icons'
 import { Container, Kicker, buttonClass } from '../ui'
 
 export default function HomeHero({ t, stats, lang }: { t: Dictionary['home']['hero']; stats: Dictionary['home']['stats']; lang: Lang }) {
-  const cells = homeStats(listedVentures.length, siteFacts)
+  const cells = homeStats(listedVentures, siteFacts)
   return (
     <section className="bg-brand-900 text-brand-50">
       <Container className="grid items-end gap-10 py-16 md:py-24 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:gap-14 lg:pt-24 lg:pb-[88px]">

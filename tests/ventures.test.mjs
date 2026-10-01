@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs'
 import { describe, it } from 'node:test'
 import { findListedVenture, listedVentures, ventures } from '../app/data/ventures.ts'
 import { siteFacts } from '../app/data/site.ts'
-import { homeStats } from '../app/lib/stats.ts'
+import { homeStats, sectorCount } from '../app/lib/stats.ts'
 
 const localizedFields = (v) => [v.status, v.tag, v.headline, v.desc, v.basedIn, v.smvcRole, v.story.problem, v.story.built, v.story.now]
 
@@ -46,16 +46,37 @@ describe('ventures', () => {
 })
 
 describe('home statistics', () => {
-  it('count the listed ventures and hide what is not filled in', () => {
-    const cells = homeStats(listedVentures.length, { firstCompanyYear: null, peopleEmployed: null })
+  const none = { firstCompanyYear: null, peopleEmployed: null }
+  const value = (cells, key) => cells.find((c) => c.key === key)?.value
+
+  it('count the listed ventures and their distinct sectors, and hide what is not filled in', () => {
+    const cells = homeStats(listedVentures, none)
     assert.deepEqual(cells.map((c) => c.key), ['ventures', 'industries', 'handsOn', 'market'])
-    assert.equal(cells[0].value, String(listedVentures.length))
+    assert.equal(value(cells, 'ventures'), String(listedVentures.length))
+    const sectors = new Set(listedVentures.map((v) => v.tag.en.split(' · ')[0]))
+    assert.equal(value(cells, 'industries'), String(sectors.size))
+  })
+
+  it('follow the data when a venture is hidden or shown again', () => {
+    const sector = (v) => v.tag.en.split(' · ')[0]
+    // Hiding a venture that is alone in its sector removes one venture and one industry.
+    const alone = listedVentures.find((v) => listedVentures.filter((w) => sector(w) === sector(v)).length === 1)
+    assert.ok(alone)
+    const hidden = homeStats(listedVentures.filter((v) => v !== alone), none)
+    assert.equal(value(hidden, 'ventures'), String(listedVentures.length - 1))
+    assert.equal(value(hidden, 'industries'), String(sectorCount(listedVentures) - 1))
+    // Showing Sahamku again (listed: false today) adds a venture; its sector counts only if new.
+    const sahamku = ventures.find((v) => v.slug === 'sahamku')
+    const shown = homeStats([...listedVentures, sahamku], none)
+    const newSector = !listedVentures.some((v) => sector(v) === sector(sahamku))
+    assert.equal(value(shown, 'ventures'), String(listedVentures.length + 1))
+    assert.equal(value(shown, 'industries'), String(sectorCount(listedVentures) + (newSector ? 1 : 0)))
   })
 
   it('show "people employed" and "first company built" once filled in, still four cells', () => {
-    const cells = homeStats(4, { firstCompanyYear: 2024, peopleEmployed: 30 })
-    assert.deepEqual(cells.map((c) => [c.key, c.value]), [['ventures', '4'], ['firstCompany', '2024'], ['people', '30'], ['market', 'ID']])
-    assert.deepEqual(homeStats(4, { firstCompanyYear: null, peopleEmployed: 12 }).map((c) => c.key), ['ventures', 'people', 'industries', 'market'])
+    const cells = homeStats(listedVentures, { firstCompanyYear: 2024, peopleEmployed: 30 })
+    assert.deepEqual(cells.map((c) => [c.key, c.value]), [['ventures', String(listedVentures.length)], ['firstCompany', '2024'], ['people', '30'], ['market', 'ID']])
+    assert.deepEqual(homeStats(listedVentures, { firstCompanyYear: null, peopleEmployed: 12 }).map((c) => c.key), ['ventures', 'people', 'industries', 'market'])
   })
 
   it('has no unconfirmed facts filled in', () => {
