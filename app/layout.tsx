@@ -89,7 +89,7 @@ export default function RootLayout({
     { href: "/#how-we-work", label: t.nav.about },
     { href: "/#portfolio", label: t.nav.portfolio },
     { href: "/#people", label: t.nav.people },
-    { href: "/#for-shareholders", label: t.nav.shareholders },
+    { href: "/for-shareholders", label: t.nav.shareholders },
   ];
   return (
     <html lang="en" className={`${jakarta.variable} ${plexMono.variable}`}>

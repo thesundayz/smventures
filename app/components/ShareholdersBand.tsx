@@ -1,4 +1,5 @@
 // The "For shareholders" band on the home page: what the investor portal is for, and how to sign in.
+import Link from 'next/link'
 import type { Dictionary } from '@/app/i18n'
 import { INVESTOR_LOGIN } from '@/app/lib/links'
 import { Container, Kicker, Lead, SectionTitle, buttonClass } from './ui'
@@ -19,6 +20,9 @@ export default function ShareholdersBand({ t }: { t: Dictionary['home']['shareho
             <a href={INVESTOR_LOGIN} className={buttonClass.primary}>
               {t.login}
             </a>
+            <Link href="/for-shareholders" className={buttonClass.secondary}>
+              {t.howItWorks}
+            </Link>
             <p className="text-[13px] text-subtle">{t.note}</p>
           </div>
         </div>

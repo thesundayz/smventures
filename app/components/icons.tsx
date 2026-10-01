@@ -209,3 +209,9 @@ export const BuildingIcon = (p: IconProps) => (
     <path d="M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01" />
   </Icon>
 )
+export const PlusIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <path d="M12 5v14" />
+    <path d="M5 12h14" />
+  </Icon>
+)
