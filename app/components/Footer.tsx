@@ -7,12 +7,16 @@ import { type Lang, localePath } from '@/app/i18n/paths'
 import { INSTAGRAM, INVESTOR_PORTAL, LINKEDIN_COMPANY, LOGO_URL } from '@/app/lib/links'
 import CurrentYear from './CurrentYear'
 
+const linkClass = 'inline-flex min-h-11 items-center text-brand-100 underline-offset-2 hover:text-white hover:underline'
+
 export default function Footer({ t, lang, logoAlt, buildYear }: { t: Dictionary['footer']; lang: Lang; logoAlt: string; buildYear: number }) {
   const [before, after] = t.copyright.split('{year}')
+  // Same order as the mockup: LinkedIn, Instagram, Privacy, investor.smventures.id.
   const links = [
-    { href: LINKEDIN_COMPANY, label: t.linkedin },
-    { href: INSTAGRAM, label: t.instagram },
-    { href: INVESTOR_PORTAL, label: t.investorPortal },
+    { href: LINKEDIN_COMPANY, label: t.linkedin, external: true },
+    { href: INSTAGRAM, label: t.instagram, external: true },
+    { href: localePath(lang, '/privacy'), label: t.privacy, external: false },
+    { href: INVESTOR_PORTAL, label: t.investorPortal, external: true },
   ]
   return (
     <footer className="bg-brand-900 text-brand-100">
@@ -30,24 +34,17 @@ export default function Footer({ t, lang, logoAlt, buildYear }: { t: Dictionary[
         </div>
         <nav aria-label={t.linksLabel}>
           <ul className="flex flex-wrap gap-x-6 gap-y-1 text-[13px]">
-            <li>
-              <Link
-                href={localePath(lang, '/privacy')}
-                className="inline-flex min-h-11 items-center text-brand-100 underline-offset-2 hover:text-white hover:underline"
-              >
-                {t.privacy}
-              </Link>
-            </li>
             {links.map((link) => (
               <li key={link.href}>
-                <a
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex min-h-11 items-center text-brand-100 underline-offset-2 hover:text-white hover:underline"
-                >
-                  {link.label}
-                </a>
+                {link.external ? (
+                  <a href={link.href} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link href={link.href} className={linkClass}>
+                    {link.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>

@@ -69,7 +69,11 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-surface font-sans text-base leading-[1.6] text-ink antialiased;
+    @apply flex min-h-dvh flex-col bg-surface font-sans text-base leading-[1.6] text-ink antialiased;
+  }
+  /* Short pages keep the footer at the bottom of the window. */
+  body > main {
+    flex: 1 0 auto;
   }
   /* Keyboard focus is always visible. */
   :focus-visible {
