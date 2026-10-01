@@ -2,6 +2,7 @@
 
 // The contact form, in a dialog opened by "Pitch your idea" (Hero) and "Get in touch" (Cta).
 // It posts to /api/contact. Whatever happens, what was typed stays in the form until it is sent.
+import Link from 'next/link'
 import { type FormEvent, type ReactNode, useEffect, useRef, useState } from 'react'
 import type { Dictionary } from '@/app/i18n'
 import { type Lang, fmt } from '@/app/i18n/paths'
@@ -38,7 +39,8 @@ const input =
   'focus:border-brand-600 focus:outline-2 focus:outline-offset-1 focus:outline-brand-600 aria-[invalid=true]:border-danger-700'
 const fieldError = 'mt-1 text-xs text-danger-700'
 
-export default function ContactForm({ t, lang }: { t: Dictionary['contact']; lang: Lang }) {
+export default function ContactForm({ t, lang, consent }: { t: Dictionary['contact']; lang: Lang; consent: { text: string; link: string; href: string } }) {
+  const [beforeLink, afterLink] = consent.text.split('{link}')
   // The English site shows the server's own wording, as before. The Indonesian site sends the same
   // request and shows the same answers from its dictionary.
   const localize = lang !== 'en'
@@ -212,6 +214,14 @@ export default function ContactForm({ t, lang }: { t: Dictionary['contact']; lan
                 )}
               </div>
             )}
+
+            <p className="text-xs leading-relaxed text-subtle">
+              {beforeLink}
+              <Link href={consent.href} onClick={() => setOpen(false)} className="font-semibold text-brand-700 underline underline-offset-2">
+                {consent.link}
+              </Link>
+              {afterLink}
+            </p>
 
             <button
               type="submit"

@@ -5,7 +5,7 @@ import { BASE_URL } from "./lib/links";
 import { sitemapEntries } from "./lib/sitemap-entries";
 
 // Pages that exist in both languages.
-const SITE_PAGES = ["/", "/about", "/for-shareholders"];
+const SITE_PAGES = ["/", "/about", "/for-shareholders", "/privacy"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return sitemapEntries({

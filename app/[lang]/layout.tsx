@@ -113,8 +113,12 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
           }}
         />
         {children}
-        <Footer t={t.footer} logoAlt={t.brand.logoAlt} buildYear={buildYear} />
-        <ContactForm t={t.contact} lang={lang} />
+        <Footer t={t.footer} lang={lang} logoAlt={t.brand.logoAlt} buildYear={buildYear} />
+        <ContactForm
+          t={t.contact}
+          lang={lang}
+          consent={{ text: t.privacy.consent, link: t.privacy.consentLink, href: localePath(lang, "/privacy") }}
+        />
       </body>
       <GoogleAnalytics gaId="G-MPJCQW41XD" />
     </html>

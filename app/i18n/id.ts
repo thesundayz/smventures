@@ -40,6 +40,7 @@ export const id: Dictionary = {
     linksLabel: 'SMVentures di tempat lain',
     linkedin: 'LinkedIn',
     instagram: 'Instagram',
+    privacy: 'Privasi',
     investorPortal: 'investor.smventures.id',
     copyright: '© {year} SMVentures · Jakarta, Indonesia',
   },
@@ -267,6 +268,90 @@ export const id: Dictionary = {
     homeTitle: 'Terbaru dari SMVentures',
     all: 'Semua tulisan',
     feedTitle: 'Wawasan SMVentures',
+  },
+  privacy: {
+    metaTitle: 'Kebijakan privasi',
+    metaDescription: 'Cara SMVentures menangani data pribadi yang Anda kirim lewat formulir kontak di smventures.id, dan cara situs ini memakai Google Analytics.',
+    kicker: 'Privasi',
+    title: 'Kebijakan privasi',
+    updated: 'Terakhir diperbarui {date}',
+    draft: 'DRAF — perlu ditinjau',
+    draftNote: 'Kebijakan ini masih draf dan belum ditinjau oleh konsultan hukum.',
+    controller: 'SMVentures',
+    who: {
+      title: 'Siapa kami',
+      text: '{controller} (“kami”) mengelola smventures.id dan menentukan cara data pribadi yang dijelaskan di sini digunakan. Kami mengacu pada Undang-Undang Nomor 27 Tahun 2022 tentang Pelindungan Data Pribadi (“UU PDP”).',
+    },
+    collect: {
+      title: 'Data yang dikumpulkan formulir kontak',
+      intro: 'Saat Anda mengirim formulir kontak, kami menerima:',
+      items: [
+        'nama Anda;',
+        'alamat email Anda, agar kami bisa membalas;',
+        'nama organisasi Anda, bila Anda mengisinya;',
+        'topik pesan Anda (mengajukan ide, kemitraan, investasi, atau hal lain);',
+        'isi pesan Anda.',
+      ],
+      technical:
+        'Untuk mencegah banjir pesan, server menghitung jumlah pesan per alamat internet (IP). Hitungan itu hanya disimpan di memori kerja server, tidak ditulis ke penyimpanan atau log, dan hilang saat server dimulai ulang. Bila pengiriman gagal, log galat kami hanya mencatat bahwa pengiriman gagal, tanpa isi pesan atau data Anda.',
+    },
+    purpose: {
+      title: 'Untuk apa data itu dipakai',
+      text: 'Data yang Anda kirim hanya kami pakai untuk membaca pesan Anda, membalasnya, dan menindaklanjuti permintaan Anda. Kami tidak menjualnya dan tidak memasukkan Anda ke milis.',
+    },
+    processors: {
+      title: 'Siapa yang memprosesnya untuk kami',
+      items: [
+        'Resend mengantarkan isi formulir ke kotak masuk email kami, dengan alamat Anda sebagai alamat balasan.',
+        'Vercel menjadi tempat situs ini berjalan, termasuk formulirnya.',
+        'Google menyediakan Google Analytics (lihat di bawah).',
+      ],
+      transfer: 'Penyedia ini dapat memproses data di luar Indonesia, misalnya di Amerika Serikat.',
+    },
+    retention: {
+      title: 'Berapa lama data disimpan',
+      items: [
+        'Pesan Anda tersimpan di kotak masuk email kami selama masih diperlukan untuk menangani permintaan Anda dan tindak lanjutnya, lalu dihapus.',
+        'Hitungan per alamat IP hanya ada selama masih tersimpan di memori server.',
+        'Penyedia layanan kami menyimpan catatan pengiriman dan permintaan mereka sendiri untuk waktu terbatas sesuai ketentuan mereka.',
+      ],
+    },
+    analytics: {
+      title: 'Google Analytics',
+      text: 'Kami memakai Google Analytics untuk melihat cara situs ini digunakan: halaman yang dibuka, perkiraan lokasi pengunjung, perangkat dan peramban yang dipakai, serta dari mana pengunjung datang. Google Analytics menyimpan cookie di peramban Anda, dan Google memproses data ini, mungkin di luar Indonesia. Anda bisa memblokir cookie ini lewat pengaturan peramban, atau memasang pengaya penolakan dari Google.',
+      optOut: 'Pengaya penolakan Google Analytics',
+    },
+    rights: {
+      title: 'Hak Anda',
+      intro: 'Menurut UU PDP, Anda berhak antara lain untuk:',
+      items: [
+        'mendapat informasi tentang cara data pribadi Anda diproses;',
+        'melihat data pribadi Anda dan mendapatkan salinannya;',
+        'meminta perbaikan data yang tidak akurat atau tidak lengkap;',
+        'meminta penghapusan data, kecuali yang wajib kami simpan menurut hukum;',
+        'menarik persetujuan kapan saja;',
+        'meminta penundaan atau pembatasan pemrosesan;',
+        'menerima data Anda dalam format yang umum dipakai;',
+        'mengajukan keberatan, dan menuntut ganti rugi atas pelanggaran pemrosesan data Anda.',
+      ],
+    },
+    contact: {
+      title: 'Cara menghubungi kami soal data Anda',
+      withEmail: 'Kirim email ke {email}, sebaiknya dari alamat yang Anda pakai saat menghubungi kami. Kami dapat meminta Anda memastikan identitas sebelum menindaklanjuti permintaan.',
+      withoutEmail: 'Kirim pesan lewat formulir kontak, pilih “Hal lain”, dan tuliskan apa yang Anda minta. Kami dapat meminta Anda memastikan identitas sebelum menindaklanjuti permintaan.',
+      button: 'Buka formulir kontak',
+    },
+    portal: {
+      title: 'Portal investor',
+      text: 'Portal investor di investor.smventures.id punya kebijakan privasi sendiri yang mengatur data pemegang saham.',
+      link: 'Baca kebijakan privasi portal investor',
+    },
+    changes: {
+      title: 'Perubahan',
+      text: 'Bila kebijakan ini berubah, kami memperbarui halaman ini dan tanggal di bagian atasnya.',
+    },
+    consent: 'Dengan mengirim formulir ini, Anda setuju data Anda kami pakai untuk membalas, sesuai {link} kami.',
+    consentLink: 'kebijakan privasi',
   },
   venture: {
     metaTitle: '{name} — portofolio SMVentures',

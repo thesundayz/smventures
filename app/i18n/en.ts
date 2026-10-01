@@ -38,6 +38,7 @@ export const en = {
     linksLabel: 'SMVentures elsewhere',
     linkedin: 'LinkedIn',
     instagram: 'Instagram',
+    privacy: 'Privacy',
     investorPortal: 'investor.smventures.id',
     copyright: '© {year} SMVentures · Jakarta, Indonesia',
   },
@@ -256,6 +257,90 @@ export const en = {
     homeTitle: 'Latest from SMVentures',
     all: 'All insights',
     feedTitle: 'SMVentures Insights',
+  },
+  privacy: {
+    metaTitle: 'Privacy policy',
+    metaDescription: 'How SMVentures handles the personal data you send through the contact form on smventures.id, and how the site uses Google Analytics.',
+    kicker: 'Privacy',
+    title: 'Privacy policy',
+    updated: 'Last updated {date}',
+    draft: 'DRAFT — to be reviewed',
+    draftNote: 'This policy is a draft that has not yet been reviewed by legal counsel.',
+    controller: 'SMVentures',
+    who: {
+      title: 'Who we are',
+      text: '{controller} (“we”) runs smventures.id and decides how the personal data described here is used. We follow Indonesia’s Personal Data Protection Law (Law No. 27 of 2022, “UU PDP”).',
+    },
+    collect: {
+      title: 'What the contact form collects',
+      intro: 'When you send the contact form, we receive:',
+      items: [
+        'your name;',
+        'your email address, so we can reply;',
+        'your organisation, if you fill it in;',
+        'what your message is about (pitching an idea, a partnership, investing, or something else);',
+        'your message.',
+      ],
+      technical:
+        'To stop floods of messages, the server counts messages per internet (IP) address. That count is kept only in the server’s working memory, is not written to storage or logs, and disappears when the server restarts. If sending fails, our error log records only that it failed, never your message or details.',
+    },
+    purpose: {
+      title: 'Why we use it',
+      text: 'We use what you send only to read your message, answer you, and follow up on what you asked. We do not sell it, and we do not add you to a mailing list.',
+    },
+    processors: {
+      title: 'Who processes it for us',
+      items: [
+        'Resend delivers the form to our email inbox, with your address as the reply-to.',
+        'Vercel hosts the site and runs the form.',
+        'Google provides Google Analytics (see below).',
+      ],
+      transfer: 'These providers may process data outside Indonesia, for example in the United States.',
+    },
+    retention: {
+      title: 'How long we keep it',
+      items: [
+        'Your message stays in our email inbox for as long as we need it to handle your request and any follow-up, and is then deleted.',
+        'The per-address count lasts only while the server keeps it in memory.',
+        'Our providers keep their own delivery and request records for a limited time under their terms.',
+      ],
+    },
+    analytics: {
+      title: 'Google Analytics',
+      text: 'We use Google Analytics to see how the site is used: which pages are viewed, roughly where visitors are, which device and browser they use, and how they arrived. Google Analytics sets cookies in your browser, and Google processes this data, possibly outside Indonesia. You can block these cookies in your browser settings, or install Google’s opt-out add-on.',
+      optOut: 'Google Analytics opt-out add-on',
+    },
+    rights: {
+      title: 'Your rights',
+      intro: 'Under UU PDP you have the right, among others, to:',
+      items: [
+        'be told how your personal data is processed;',
+        'see your personal data and get a copy of it;',
+        'have inaccurate or incomplete data corrected;',
+        'have your data deleted, unless the law requires us to keep it;',
+        'withdraw your consent at any time;',
+        'ask us to delay or restrict processing;',
+        'receive your data in a commonly used format;',
+        'object, and claim compensation for a breach in how your data was processed.',
+      ],
+    },
+    contact: {
+      title: 'How to reach us about your data',
+      withEmail: 'Email {email}, preferably from the address you used. We may ask you to confirm who you are before acting on a request.',
+      withoutEmail: 'Send us a message through the contact form, choose “Something else”, and say what you would like us to do. We may ask you to confirm who you are before acting on a request.',
+      button: 'Open the contact form',
+    },
+    portal: {
+      title: 'The investor portal',
+      text: 'The investor portal at investor.smventures.id has its own privacy policy, which covers shareholder data.',
+      link: 'Read the investor portal’s privacy policy',
+    },
+    changes: {
+      title: 'Changes',
+      text: 'When this policy changes, we update this page and the date at the top.',
+    },
+    consent: 'By sending this form you agree that we use your details to reply, as described in our {link}.',
+    consentLink: 'privacy policy',
   },
   venture: {
     metaTitle: '{name} — SMVentures portfolio',
