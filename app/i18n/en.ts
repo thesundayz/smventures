@@ -6,6 +6,21 @@ export const en = {
     logoAlt: 'SMVC Venture Capital',
     home: 'SMVentures home',
   },
+  meta: {
+    title: 'SMVentures — Venture Builder, Indonesia',
+    description:
+      'SMVentures is a venture builder that co-builds and operates companies across Indonesia’s most important industries — LegalTech, FinTech, PropTech, and enterprise SaaS.',
+    ogDescription:
+      'Co-building companies across Indonesia’s most important industries. LegalTech, FinTech, PropTech, and enterprise SaaS.',
+    shortDescription: 'Co-building companies across Indonesia’s most important industries.',
+  },
+  language: {
+    label: 'Language',
+    en: 'EN',
+    id: 'ID',
+    enName: 'EN, English',
+    idName: 'ID, Bahasa Indonesia',
+  },
   nav: {
     label: 'Main',
     about: 'About',
@@ -287,6 +302,23 @@ export const en = {
     send: 'Send message',
     sending: 'Sending…',
     openLinkedIn: 'Open LinkedIn',
+    // The English form shows the server's own wording (app/lib/contact.ts); these match it.
+    messages: {
+      sent: 'Thank you — your message is on its way. We’ll reply by email.',
+      notConfigured:
+        'Our contact form isn’t switched on yet, so nothing was sent. Please reach us on LinkedIn instead (the link is in the footer) — your message is still here to copy.',
+      failed:
+        'Sorry, we couldn’t send your message just now, so nothing was sent. Please try again in a few minutes, or reach us on LinkedIn (the link is in the footer).',
+      rateLimited: 'That’s a lot of messages in a short time. Please wait about {seconds} seconds and try again — your message is still here.',
+      invalid: 'Please check the highlighted fields.',
+    },
+    errors: {
+      name: 'Please tell us your name (up to 100 characters).',
+      email: 'That email address doesn’t look right.',
+      organisation: 'Please keep this under 150 characters.',
+      kind: 'Please choose what this is about.',
+      message: 'Please write between 10 and 5,000 characters.',
+    },
   },
 }
 

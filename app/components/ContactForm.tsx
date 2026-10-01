@@ -4,6 +4,7 @@
 // It posts to /api/contact. Whatever happens, what was typed stays in the form until it is sent.
 import { type FormEvent, type ReactNode, useEffect, useRef, useState } from 'react'
 import type { Dictionary } from '@/app/i18n'
+import { type Lang, fmt } from '@/app/i18n/paths'
 import { CONTACT_KINDS, CONTACT_MESSAGES, type ContactField, type ContactKind, LINKEDIN_URL } from '../lib/contact'
 import { CloseIcon } from './icons'
 
@@ -37,7 +38,10 @@ const input =
   'focus:border-brand-600 focus:outline-2 focus:outline-offset-1 focus:outline-brand-600 aria-[invalid=true]:border-danger-700'
 const fieldError = 'mt-1 text-xs text-danger-700'
 
-export default function ContactForm({ t }: { t: Dictionary['contact'] }) {
+export default function ContactForm({ t, lang }: { t: Dictionary['contact']; lang: Lang }) {
+  // The English site shows the server's own wording, as before. The Indonesian site sends the same
+  // request and shows the same answers from its dictionary.
+  const localize = lang !== 'en'
   const [open, setOpen] = useState(false)
   const [values, setValues] = useState(EMPTY)
   const [errors, setErrors] = useState<Partial<Record<ContactField, string>>>({})
@@ -93,18 +97,28 @@ export default function ContactForm({ t }: { t: Dictionary['contact'] }) {
       if (response.ok && body.ok) {
         setValues(EMPTY)
         setErrors({})
-        setStatus({ state: 'sent', message: body.message ?? CONTACT_MESSAGES.sent })
+        setStatus({ state: 'sent', message: localize ? t.messages.sent : (body.message ?? CONTACT_MESSAGES.sent) })
         return
       }
-      if (body.reason === 'invalid') setErrors(body.errors ?? {})
+      if (body.reason === 'invalid') {
+        const fields = body.errors ?? {}
+        setErrors(localize ? Object.fromEntries(Object.keys(fields).map((f) => [f, t.errors[f as ContactField]])) : fields)
+      }
       setStatus({
         state: 'error',
-        message: body.message ?? CONTACT_MESSAGES.failed,
+        message: localize ? localized(body.reason, response.headers.get('Retry-After')) : (body.message ?? CONTACT_MESSAGES.failed),
         linkedIn: body.reason === 'not_configured' || body.reason === 'failed' || !body.reason,
       })
     } catch {
-      setStatus({ state: 'error', message: CONTACT_MESSAGES.failed, linkedIn: true })
+      setStatus({ state: 'error', message: localize ? t.messages.failed : CONTACT_MESSAGES.failed, linkedIn: true })
     }
+  }
+
+  function localized(reason: string | undefined, retryAfter: string | null): string {
+    if (reason === 'invalid') return t.messages.invalid
+    if (reason === 'rate_limited') return fmt(t.messages.rateLimited, { seconds: retryAfter ?? '60' })
+    if (reason === 'not_configured') return t.messages.notConfigured
+    return t.messages.failed
   }
 
   if (!open) return null

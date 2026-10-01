@@ -1,7 +1,7 @@
 // Portfolio cards on the home page: logo, status pill, sector, description. Only listed ventures.
 import Link from 'next/link'
 import { listedVentures } from '@/app/data/ventures'
-import { type Dictionary, type Lang, fmt } from '@/app/i18n'
+import { type Dictionary, type Lang, fmt, localePath } from '@/app/i18n'
 import { Container, Kicker, Pill, SectionTitle, VentureTile } from '../ui'
 
 export default function PortfolioGrid({ t, numberWords, lang }: { t: Dictionary['home']['portfolio']; numberWords: string[]; lang: Lang }) {
@@ -25,7 +25,7 @@ export default function PortfolioGrid({ t, numberWords, lang }: { t: Dictionary[
               <p className="text-[13px] leading-relaxed text-muted">{v.desc[lang]}</p>
               {/* The link covers the whole card. */}
               <Link
-                href={`/portfolio/${v.slug}`}
+                href={localePath(lang, `/portfolio/${v.slug}`)}
                 aria-label={fmt(t.readStoryOf, { name: v.name })}
                 className="mt-auto pt-1 text-[13px] font-bold text-brand-700 after:absolute after:inset-0 after:rounded-card focus-visible:outline-none"
               >

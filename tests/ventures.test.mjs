@@ -39,7 +39,7 @@ describe('ventures', () => {
 
   it('never links or names sahamku.net', () => {
     assert.equal(ventures.find((v) => v.name === 'Sahamku').domain, null)
-    for (const file of ['app/data/ventures.ts', 'app/components/home/PortfolioGrid.tsx', 'app/page.tsx', 'app/layout.tsx']) {
+    for (const file of ['app/data/ventures.ts', 'app/components/home/PortfolioGrid.tsx', 'app/[lang]/page.tsx', 'app/[lang]/layout.tsx']) {
       assert.doesNotMatch(readFileSync(file, 'utf8'), /sahamku\.net/i, file)
     }
   })

@@ -3,13 +3,13 @@
 import Link from 'next/link'
 import { siteFacts } from '@/app/data/site'
 import { listedVentures } from '@/app/data/ventures'
-import type { Dictionary } from '@/app/i18n'
+import { type Dictionary, type Lang, localePath } from '@/app/i18n'
 import { homeStats } from '@/app/lib/stats'
 import { ContactButton } from '../ContactForm'
 import { ArrowRightIcon } from '../icons'
 import { Container, Kicker, buttonClass } from '../ui'
 
-export default function HomeHero({ t, stats }: { t: Dictionary['home']['hero']; stats: Dictionary['home']['stats'] }) {
+export default function HomeHero({ t, stats, lang }: { t: Dictionary['home']['hero']; stats: Dictionary['home']['stats']; lang: Lang }) {
   const cells = homeStats(listedVentures.length, siteFacts)
   return (
     <section className="bg-brand-900 text-brand-50">
@@ -24,7 +24,7 @@ export default function HomeHero({ t, stats }: { t: Dictionary['home']['hero']; 
             <ContactButton kind="pitch" className={buttonClass.onDarkPrimary}>
               {t.pitch}
             </ContactButton>
-            <Link href="/#portfolio" className={buttonClass.onDarkSecondary}>
+            <Link href={`${localePath(lang, '/')}#portfolio`} className={buttonClass.onDarkSecondary}>
               {t.seePortfolio} <ArrowRightIcon size={16} />
             </Link>
           </div>
