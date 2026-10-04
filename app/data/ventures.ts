@@ -5,7 +5,7 @@
 
 export type Localized = { en: string; id: string }
 
-export type VentureTagKey = 'legal' | 'tech' | 'fin' | 'acc' | 'prop'
+export type VentureTagKey = 'legal' | 'tech' | 'fin' | 'acc' | 'prop' | 'build'
 
 export type Venture = {
   /** URL of the venture page: /portfolio/<slug> */
@@ -17,14 +17,21 @@ export type Venture = {
   domain: string | null
   featured: boolean
   status: Localized
+  /** Colour of the status pill: 'info' for a venture that has not launched yet; otherwise the default. */
+  statusTone?: 'info'
   tagKey: VentureTagKey
   /** "Sector · focus"; the part before " · " is shown as the sector. */
   tag: Localized
   /** One line used as the lead on the venture page. */
   headline: Localized
+  /** The description on the home card, in metadata and in JSON-LD. */
   desc: Localized
+  /** The paragraph under the headline on the venture page, when it differs from `desc`. */
+  intro?: Localized
   pills: { en: string[]; id: string[] }
   logo: string
+  /** The logo is an app icon with its own background and rounded corners: shown without the tile's frame. */
+  logoIsAppIcon?: boolean
   /** Year ("2024") or year and month ("2024-06") the company was founded. */
   founded: string | null
   basedIn: Localized | null
@@ -127,9 +134,43 @@ export const ventures: Venture[] = [
     story: noStory,
   },
   {
+    slug: 'wangunin',
+    name: 'Wangun.in',
+    listed: true,
+    domain: 'wangun.in',
+    featured: false,
+    status: { en: 'Coming soon', id: 'Segera hadir' },
+    statusTone: 'info',
+    tagKey: 'build',
+    tag: { en: 'ConTech · Marketplace', id: 'ConTech · Marketplace' },
+    headline: {
+      en: 'Find a contractor you can trust.',
+      id: 'Temukan kontraktor terpercaya.',
+    },
+    desc: {
+      en: 'A platform that connects you with trusted contractors for homes, renovations and other construction projects.',
+      id: 'Platform yang mempertemukan Anda dengan kontraktor terpercaya untuk rumah, renovasi, dan berbagai proyek konstruksi.',
+    },
+    intro: {
+      en: 'Homes, renovations and more. Search contractors by need and location, see their portfolios, and compare quotes in one place.',
+      id: 'Rumah, renovasi, dan lebih banyak. Cari kontraktor sesuai kebutuhan dan lokasi, lihat portofolionya, dan bandingkan penawaran di satu tempat.',
+    },
+    pills: {
+      en: ['Find contractors', 'Verified contractors', 'Compare quotes'],
+      id: ['Cari kontraktor', 'Kontraktor terverifikasi', 'Bandingkan penawaran'],
+    },
+    logo: '/images/logo-wangunin.png',
+    founded: null,
+    basedIn: null,
+    products: null,
+    smvcRole: null,
+    story: noStory,
+  },
+  {
+    // Not shown since Wangun.in took its place; set listed to true to bring it back.
     slug: 'neracaku',
     name: 'Neracaku',
-    listed: true,
+    listed: false,
     domain: 'neracaku.id',
     featured: false,
     status: { en: 'Live', id: 'Beroperasi' },
@@ -155,8 +196,9 @@ export const ventures: Venture[] = [
     story: noStory,
   },
   {
+    // The slug and domain keep the full name; the site shows "Natara".
     slug: 'natara-projects',
-    name: 'Natara Projects',
+    name: 'Natara',
     listed: true,
     domain: 'nataraprojects.com',
     featured: false,
@@ -176,6 +218,7 @@ export const ventures: Venture[] = [
       id: ['Desain & bangun', 'Renovasi', 'Manajemen proyek'],
     },
     logo: '/images/logo-natara.png',
+    logoIsAppIcon: true,
     founded: null,
     basedIn: null,
     products: null,

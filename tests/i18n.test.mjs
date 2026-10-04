@@ -88,7 +88,7 @@ describe('paths', () => {
   it('put Indonesian under /id and English without a prefix', () => {
     assert.equal(localePath('en', '/'), '/')
     assert.equal(localePath('id', '/'), '/id')
-    assert.equal(localePath('id', '/portfolio/neracaku'), '/id/portfolio/neracaku')
+    assert.equal(localePath('id', '/portfolio/wangunin'), '/id/portfolio/wangunin')
     assert.equal(stripLang('/id/about'), '/about')
     assert.equal(stripLang('/id'), '/')
     assert.equal(stripLang('/en/about'), '/about')

@@ -9,9 +9,9 @@ export const en = {
   meta: {
     title: 'SMVentures — Venture Builder, Indonesia',
     description:
-      'SMVentures is a venture builder that co-builds and operates companies across Indonesia’s most important industries — LegalTech, FinTech, PropTech, and enterprise SaaS.',
+      'SMVentures is a venture builder that co-builds and operates companies across Indonesia’s most important industries — LegalTech, PropTech, ConTech, and enterprise SaaS.',
     ogDescription:
-      'Co-building companies across Indonesia’s most important industries. LegalTech, FinTech, PropTech, and enterprise SaaS.',
+      'Co-building companies across Indonesia’s most important industries. LegalTech, PropTech, ConTech, and enterprise SaaS.',
     shortDescription: 'Co-building companies across Indonesia’s most important industries.',
   },
   language: {
@@ -144,7 +144,7 @@ export const en = {
   about: {
     metaTitle: 'About',
     metaDescription:
-      'SMVentures is a venture builder that co-builds and operates companies across Indonesia’s most important industries — LegalTech, FinTech, PropTech, and enterprise SaaS.',
+      'SMVentures is a venture builder that co-builds and operates companies across Indonesia’s most important industries — LegalTech, PropTech, ConTech, and enterprise SaaS.',
     howWeWork: {
       kicker: 'How we work',
       title: 'Beyond the check.',

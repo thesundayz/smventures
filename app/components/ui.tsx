@@ -61,11 +61,21 @@ const tileTones: Record<Venture['tagKey'], string> = {
   fin: 'bg-warn-50 text-warn-700',
   acc: 'bg-info-50 text-info-700',
   prop: 'bg-warn-50 text-warn-700',
+  build: 'bg-info-50 text-info-700',
 }
 
 /** The venture's logo in a rounded tile; coloured initials only when there is no logo. */
-export function VentureTile({ venture, size = 48 }: { venture: Pick<Venture, 'name' | 'logo' | 'tagKey'>; size?: 48 | 64 }) {
+export function VentureTile({ venture, size = 48 }: { venture: Pick<Venture, 'name' | 'logo' | 'tagKey' | 'logoIsAppIcon'>; size?: 48 | 64 }) {
   const box = size === 64 ? 'size-16 rounded-card text-[22px]' : 'size-12 rounded-note text-base'
+  if (venture.logo && venture.logoIsAppIcon) {
+    // An app icon brings its own background and rounded corners: no frame of ours (no box in a
+    // box), and its transparent margin is cropped so it fills the tile like the other logos.
+    return (
+      <span className={`${box} block shrink-0 overflow-hidden`}>
+        <Image src={venture.logo} alt="" width={size} height={size} className="size-full scale-[1.14] object-cover" />
+      </span>
+    )
+  }
   if (venture.logo) {
     return (
       <Image

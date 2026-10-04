@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
       "startup Indonesia",
       "venture capital Indonesia",
       "LegalTech Indonesia",
-      "FinTech Indonesia",
+      "ConTech Indonesia",
       "SMVentures",
       "Tandatangan ID",
       "e-signature Indonesia",

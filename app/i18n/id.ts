@@ -11,9 +11,9 @@ export const id: Dictionary = {
   meta: {
     title: 'SMVentures — Venture Builder, Indonesia',
     description:
-      'SMVentures adalah venture builder yang ikut membangun dan menjalankan perusahaan di industri-industri terpenting Indonesia: LegalTech, FinTech, PropTech, dan SaaS untuk perusahaan.',
+      'SMVentures adalah venture builder yang ikut membangun dan menjalankan perusahaan di industri-industri terpenting Indonesia: LegalTech, PropTech, ConTech, dan SaaS untuk perusahaan.',
     ogDescription:
-      'Membangun perusahaan bersama di industri-industri terpenting Indonesia: LegalTech, FinTech, PropTech, dan SaaS untuk perusahaan.',
+      'Membangun perusahaan bersama di industri-industri terpenting Indonesia: LegalTech, PropTech, ConTech, dan SaaS untuk perusahaan.',
     shortDescription: 'Membangun perusahaan bersama di industri-industri terpenting Indonesia.',
   },
   language: {
@@ -155,7 +155,7 @@ export const id: Dictionary = {
   about: {
     metaTitle: 'Tentang',
     metaDescription:
-      'SMVentures adalah venture builder yang ikut membangun dan menjalankan perusahaan di industri-industri terpenting Indonesia: LegalTech, FinTech, PropTech, dan SaaS untuk perusahaan.',
+      'SMVentures adalah venture builder yang ikut membangun dan menjalankan perusahaan di industri-industri terpenting Indonesia: LegalTech, PropTech, ConTech, dan SaaS untuk perusahaan.',
     howWeWork: {
       kicker: 'Cara kami bekerja',
       title: 'Lebih dari sekadar modal.',

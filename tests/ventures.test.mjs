@@ -6,7 +6,7 @@ import { findListedVenture, listedVentures, ventures } from '../app/data/venture
 import { siteFacts } from '../app/data/site.ts'
 import { homeStats, sectorCount } from '../app/lib/stats.ts'
 
-const localizedFields = (v) => [v.status, v.tag, v.headline, v.desc, v.basedIn, v.smvcRole, v.story.problem, v.story.built, v.story.now]
+const localizedFields = (v) => [v.status, v.tag, v.headline, v.desc, v.intro ?? null, v.basedIn, v.smvcRole, v.story.problem, v.story.built, v.story.now]
 
 describe('ventures', () => {
   it('have unique, URL-safe slugs', () => {
@@ -25,6 +25,35 @@ describe('ventures', () => {
     assert.equal(listedVentures.some((v) => v.name === 'Sahamku'), false)
     assert.equal(findListedVenture('sahamku'), undefined)
     assert.equal(findListedVenture('tandatangan-id')?.name, 'Tandatangan.ID')
+  })
+
+  it('list Wangun.in in place of Neracaku, which keeps its data but is not listed', () => {
+    assert.deepEqual(listedVentures.map((v) => v.slug), ['tandatangan-id', 'intermediatek', 'wangunin', 'natara-projects'])
+    const wangun = findListedVenture('wangunin')
+    assert.ok(wangun)
+    assert.equal(wangun.name, 'Wangun.in')
+    assert.equal(wangun.domain, 'wangun.in')
+    assert.equal(wangun.statusTone, 'info')
+    assert.deepEqual(wangun.status, { en: 'Coming soon', id: 'Segera hadir' })
+    assert.equal(wangun.tag.en, 'ConTech · Marketplace')
+    assert.equal(wangun.tag.id, 'ConTech · Marketplace')
+    assert.deepEqual([wangun.founded, wangun.basedIn, wangun.products, wangun.smvcRole], [null, null, null, null])
+    assert.deepEqual(wangun.story, { problem: null, built: null, now: null })
+    const neracaku = ventures.find((v) => v.slug === 'neracaku')
+    assert.ok(neracaku)
+    assert.equal(neracaku.listed, false)
+    assert.equal(neracaku.tag.en, 'FinTech · Accounting')
+    assert.equal(findListedVenture('neracaku'), undefined)
+  })
+
+  it('show Natara as "Natara", with the slug and domain unchanged', () => {
+    const natara = findListedVenture('natara-projects')
+    assert.ok(natara)
+    assert.equal(natara.name, 'Natara')
+    assert.equal(natara.domain, 'nataraprojects.com')
+    assert.equal(natara.logoIsAppIcon, true)
+    const everything = JSON.stringify(ventures) + readFileSync('app/i18n/en.ts', 'utf8') + readFileSync('app/i18n/id.ts', 'utf8')
+    assert.doesNotMatch(everything, /Natara Projects/)
   })
 
   it('have every text in English and Indonesian (or neither, when not filled in)', () => {

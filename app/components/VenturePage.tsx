@@ -31,11 +31,11 @@ export default function VenturePage({ venture: v, t, lang, portfolioHref }: { ve
             </Link>
             <div className="mt-4 flex items-center gap-4">
               <VentureTile venture={v} size={64} />
-              <Pill tone="ok">{v.status[lang]}</Pill>
+              <Pill tone={v.statusTone ?? 'ok'}>{v.status[lang]}</Pill>
             </div>
             <h1 className="mt-5 text-[40px] leading-[1.04] font-extrabold tracking-[-0.03em] text-ink md:text-[56px] md:tracking-[-0.035em]">{v.name}</h1>
             <p className="mt-4 max-w-[58ch] text-[19px] leading-[1.5] font-semibold text-ink">{v.headline[lang]}</p>
-            <p className="mt-3 max-w-[62ch] text-[17px] leading-[1.6] text-muted">{v.desc[lang]}</p>
+            <p className="mt-3 max-w-[62ch] text-[17px] leading-[1.6] text-muted">{(v.intro ?? v.desc)[lang]}</p>
             {v.pills[lang].length > 0 && (
               <ul aria-label={t.focusLabel} className="mt-5 flex flex-wrap gap-2">
                 {v.pills[lang].map((pill) => (

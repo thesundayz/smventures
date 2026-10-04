@@ -29,7 +29,8 @@ describe('sitemap', () => {
 
   it('lists listed ventures only, and published posts in their own language', () => {
     assert.ok(urls.includes('https://smventures.id/portfolio/tandatangan-id'))
-    assert.ok(urls.includes('https://smventures.id/id/portfolio/neracaku'))
+    assert.ok(urls.includes('https://smventures.id/id/portfolio/wangunin'))
+    assert.equal(urls.some((u) => u.includes('neracaku')), false)
     assert.equal(urls.some((u) => u.includes('sahamku')), false)
     assert.ok(urls.includes('https://smventures.id/id/insights/tulisan'))
     assert.equal(urls.some((u) => u === 'https://smventures.id/insights'), false)

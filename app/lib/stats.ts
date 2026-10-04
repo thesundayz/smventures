@@ -7,7 +7,7 @@
 export type StatKey = 'ventures' | 'firstCompany' | 'people' | 'industries' | 'handsOn' | 'market'
 export type Stat = { key: StatKey; value: string }
 
-/** Distinct sectors: the part of the English tag before " · " ("FinTech · Accounting" → "FinTech"). */
+/** Distinct sectors: the part of the English tag before " · " ("PropTech · Design & Build" → "PropTech"). */
 export function sectorCount(listed: { tag: { en: string } }[]): number {
   return new Set(listed.map((v) => v.tag.en.split(' · ')[0].trim())).size
 }

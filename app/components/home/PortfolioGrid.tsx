@@ -18,7 +18,7 @@ export default function PortfolioGrid({ t, numberWords, lang }: { t: Dictionary[
             <li key={v.slug} className="relative flex flex-col gap-3 rounded-card border border-line-strong bg-surface p-6 hover:border-line-control has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-brand-600">
               <div className="flex items-center justify-between gap-4">
                 <VentureTile venture={v} />
-                <Pill>{v.status[lang]}</Pill>
+                <Pill tone={v.statusTone ?? 'mute'}>{v.status[lang]}</Pill>
               </div>
               <h3 className="text-[22px] leading-tight font-extrabold text-ink">{v.name}</h3>
               <p className="text-[13px] font-semibold text-subtle">{v.tag[lang]}</p>
