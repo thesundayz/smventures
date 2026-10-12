@@ -1,6 +1,6 @@
 // The portfolio data (app/data/ventures.ts) and the home statistics (app/lib/stats.ts).
 import assert from 'node:assert/strict'
-import { readFileSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import { describe, it } from 'node:test'
 import { findListedVenture, listedVentures, ventures } from '../app/data/ventures.ts'
 import { siteFacts } from '../app/data/site.ts'
@@ -28,7 +28,7 @@ describe('ventures', () => {
   })
 
   it('list Wangun.in in place of Neracaku, which keeps its data but is not listed', () => {
-    assert.deepEqual(listedVentures.map((v) => v.slug), ['tandatangan-id', 'intermediatek', 'wangunin', 'natara-projects'])
+    assert.deepEqual(listedVentures.map((v) => v.slug), ['tandatangan-id', 'wangunin', 'rintis', 'intermediatek'])
     const wangun = findListedVenture('wangunin')
     assert.ok(wangun)
     assert.equal(wangun.name, 'Wangun.in')
@@ -46,14 +46,38 @@ describe('ventures', () => {
     assert.equal(findListedVenture('neracaku'), undefined)
   })
 
-  it('show Natara as "Natara", with the slug and domain unchanged', () => {
-    const natara = findListedVenture('natara-projects')
+  it('keep Natara\'s data, named "Natara" with the slug and domain unchanged, but not listed', () => {
+    const natara = ventures.find((v) => v.slug === 'natara-projects')
     assert.ok(natara)
     assert.equal(natara.name, 'Natara')
     assert.equal(natara.domain, 'nataraprojects.com')
     assert.equal(natara.logoIsAppIcon, true)
+    assert.equal(natara.listed, false)
+    assert.equal(findListedVenture('natara-projects'), undefined)
     const everything = JSON.stringify(ventures) + readFileSync('app/i18n/en.ts', 'utf8') + readFileSync('app/i18n/id.ts', 'utf8')
     assert.doesNotMatch(everything, /Natara Projects/)
+  })
+
+  it('list Rintis in place of Natara', () => {
+    const rintis = findListedVenture('rintis')
+    assert.ok(rintis)
+    assert.equal(rintis.name, 'Rintis')
+    assert.equal(rintis.domain, 'rintis.smventures.id')
+    assert.deepEqual(rintis.status, { en: 'Coming soon', id: 'Segera hadir' })
+    assert.equal(rintis.statusTone, 'info')
+    assert.equal(rintis.tag.en, 'SME SaaS · Digital services')
+    assert.equal(rintis.logo, '/images/logo-rintis.png')
+    assert.ok(existsSync(`public${rintis.logo}`))
+    assert.equal(rintis.logoIsAppIcon, true)
+    assert.ok(rintis.smvcRole?.en.trim() && rintis.smvcRole?.id.trim())
+    assert.deepEqual([rintis.founded, rintis.basedIn, rintis.products], [null, null, null])
+    assert.deepEqual(rintis.story, { problem: null, built: null, now: null })
+  })
+
+  it('no longer name PropTech in the site texts', () => {
+    for (const file of ['app/i18n/en.ts', 'app/i18n/id.ts']) {
+      assert.doesNotMatch(readFileSync(file, 'utf8'), /PropTech/, file)
+    }
   })
 
   it('have every text in English and Indonesian (or neither, when not filled in)', () => {
